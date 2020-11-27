@@ -17,7 +17,7 @@ jobs:
         tag_message: "v%s"
         commit_pattern: "^🔖 (\\S+)"
         workspace: "."
-        publish_command: "yarn build"
+        publish_command: "yarn"
         publish_args: "--non-interactive"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
