@@ -1,6 +1,6 @@
 {
   "name": "restapify-dashboard",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "public/",
   "scripts": {
     "build": "rollup -c",
