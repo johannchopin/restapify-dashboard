@@ -1,0 +1,234 @@
+{
+  "/animals": {
+    "GET": {
+      "route": "/animals",
+      "routeVars": [],
+      "normalizedRoute": "/animals",
+      "isExtended": false,
+      "filename": "animals.json",
+      "fileContent": "[\n  {\n    \"type\": \"dog\",\n    \"name\": \"dogo\"\n  },\n  {\n    \"type\": \"cat\",\n    \"name\": \"caty\"\n  }\n]",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "[\n  {\n    \"type\": \"dog\",\n    \"name\": \"dogo\"\n  },\n  {\n    \"type\": \"cat\",\n    \"name\": \"caty\"\n  }\n]"
+    }
+  },
+  "/plants": {
+    "GET": {
+      "route": "/plants",
+      "routeVars": [],
+      "normalizedRoute": "/plants",
+      "isExtended": false,
+      "filename": "plants.GET.json",
+      "fileContent": "[\n  {\n    \"type\": \"greasy\",\n    \"name\": \"fatty plant\"\n  },\n  {\n    \"type\": \"climbing\",\n    \"name\": \"top plant\"\n  }\n]",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "[\n  {\n    \"type\": \"greasy\",\n    \"name\": \"fatty plant\"\n  },\n  {\n    \"type\": \"climbing\",\n    \"name\": \"top plant\"\n  }\n]"
+    }
+  },
+  "/animals/[name]": {
+    "GET": {
+      "route": "/animals/[name]",
+      "routeVars": [
+        "name"
+      ],
+      "normalizedRoute": "/animals/:name",
+      "isExtended": false,
+      "filename": "[name].json",
+      "fileContent": "{\n  \"type\": \"dogo\",\n  \"name\": \"[name]\"\n}",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "{\n  \"type\": \"dogo\",\n  \"name\": \"[name]\"\n}"
+    }
+  },
+  "/animals/[name]/friends": {
+    "GET": {
+      "route": "/animals/[name]/friends",
+      "routeVars": [
+        "name"
+      ],
+      "normalizedRoute": "/animals/:name/friends",
+      "isExtended": false,
+      "filename": "friends.json",
+      "fileContent": "[\n  {\n    \"id\": \"123\",\n    \"type\": \"bird\",\n    \"name\": \"cuicui\"\n  },\n  {\n    \"id\": \"1234\",\n    \"type\": \"cat\",\n    \"name\": \"caty\"\n  }\n]",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "[\n  {\n    \"id\": \"123\",\n    \"type\": \"bird\",\n    \"name\": \"cuicui\"\n  },\n  {\n    \"id\": \"1234\",\n    \"type\": \"cat\",\n    \"name\": \"caty\"\n  }\n]"
+    }
+  },
+  "/animals/[name]/friends/[friend_id]": {
+    "GET": {
+      "route": "/animals/[name]/friends/[friend_id]",
+      "routeVars": [
+        "name",
+        "friend_id"
+      ],
+      "normalizedRoute": "/animals/:name/friends/:friend_id",
+      "isExtended": false,
+      "filename": "[friend_id].json",
+      "fileContent": "{\n  \"id\": \"[friend_id]\",\n  \"type\": \"cat\",\n  \"friends\": [\n    {\n      \"name\": \"[name]\",\n      \"type\": \"dog\"\n    }\n  ]\n}",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "{\n  \"id\": \"[friend_id]\",\n  \"type\": \"cat\",\n  \"friends\": [\n    {\n      \"name\": \"[name]\",\n      \"type\": \"dog\"\n    }\n  ]\n}"
+    }
+  },
+  "/comments": {
+    "GET": {
+      "route": "/comments",
+      "routeVars": [],
+      "normalizedRoute": "/comments",
+      "isExtended": false,
+      "filename": "*.GET.json",
+      "fileContent": "[\n  {\n    \"id\": 1,\n    \"comment\": \"Text\"\n  },\n  {\n    \"id\": 2,\n    \"comment\": \"Text\"\n  }\n]",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "[\n  {\n    \"id\": 1,\n    \"comment\": \"Text\"\n  },\n  {\n    \"id\": 2,\n    \"comment\": \"Text\"\n  }\n]"
+    }
+  },
+  "/comments/42": {
+    "GET": {
+      "route": "/comments/42",
+      "routeVars": [],
+      "normalizedRoute": "/comments/42",
+      "isExtended": false,
+      "filename": "42.json",
+      "fileContent": "{\n  \"type\": \"user\",\n  \"id\": \"4242\"\n}",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "{\n  \"type\": \"user\",\n  \"id\": \"4242\"\n}"
+    }
+  },
+  "/comments/[id]": {
+    "GET": {
+      "route": "/comments/[id]",
+      "routeVars": [
+        "id"
+      ],
+      "normalizedRoute": "/comments/:id",
+      "isExtended": false,
+      "filename": "*.json",
+      "fileContent": "{\n  \"id\": \"[id]\",\n  \"type\": \"comment\"\n}",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "{\n  \"id\": \"[id]\",\n  \"type\": \"comment\"\n}"
+    }
+  },
+  "/posts": {
+    "GET": {
+      "route": "/posts",
+      "routeVars": [],
+      "normalizedRoute": "/posts",
+      "isExtended": false,
+      "filename": "*.json",
+      "fileContent": "[\n  {\n    \"id\": 1,\n    \"post\": \"test\"\n  },\n  {\n    \"id\": 2,\n    \"post\": \"test\"\n  }\n]",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "[\n  {\n    \"id\": 1,\n    \"post\": \"test\"\n  },\n  {\n    \"id\": 2,\n    \"post\": \"test\"\n  }\n]"
+    }
+  },
+  "/posts/[postid]": {
+    "GET": {
+      "route": "/posts/[postid]",
+      "routeVars": [
+        "postid"
+      ],
+      "normalizedRoute": "/posts/:postid",
+      "isExtended": false,
+      "filename": "*.json",
+      "fileContent": "{\n  \"postId\": \"[postid]\",\n  \"success\": true\n}",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "{\n  \"postId\": \"[postid]\",\n  \"success\": true\n}"
+    }
+  },
+  "/posts/[postid]/comments/[commentid]": {
+    "GET": {
+      "route": "/posts/[postid]/comments/[commentid]",
+      "routeVars": [
+        "postid",
+        "commentid"
+      ],
+      "normalizedRoute": "/posts/:postid/comments/:commentid",
+      "isExtended": false,
+      "filename": "[commentid].json",
+      "fileContent": "{\n  \"post\": \"(number)[postid]\",\n  \"comment\": \"(number)[commentid]\"\n}",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "{\n  \"post\": \"(number)[postid]\",\n  \"comment\": \"(number)[commentid]\"\n}"
+    }
+  },
+  "/users": {
+    "POST": {
+      "route": "/users",
+      "routeVars": [],
+      "normalizedRoute": "/users",
+      "isExtended": true,
+      "filename": "*.POST.201.json",
+      "fileContent": "{\n  \"__header\": {\n    \"Content-Type\": \"text/html; charset=utf-8\"\n  },\n  \"__body\": {\n    \"success\": true,\n    \"data\": {\n      \"id\": 67,\n      \"name\": \"bob\"\n    }\n  }\n}",
+      "stateVars": [],
+      "statusCode": 201,
+      "method": "POST",
+      "body": "{\"success\":true,\"data\":{\"id\":67,\"name\":\"bob\"}}",
+      "header": {
+        "Content-Type": "text/html; charset=utf-8"
+      }
+    },
+    "GET": {
+      "route": "/users",
+      "routeVars": [],
+      "normalizedRoute": "/users",
+      "isExtended": false,
+      "filename": "*.json",
+      "fileContent": "[\n  {\n    \"user\": 1\n  },\n\n  {\n    \"user\": 2\n  }\n]",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "[\n  {\n    \"user\": 1\n  },\n\n  {\n    \"user\": 2\n  }\n]"
+    }
+  },
+  "/users/[userid]": {
+    "DELETE": {
+      "route": "/users/[userid]",
+      "routeVars": [
+        "userid"
+      ],
+      "normalizedRoute": "/users/:userid",
+      "isExtended": true,
+      "filename": "[userid].DELETE.404.{ERR}.json",
+      "fileContent": "{\n  \"__header\": {\n    \"Content-Type\": \"text/html; charset=UTF-8\"\n  },\n  \"__body\": {\n    \"success\": false\n  }\n}",
+      "stateVars": [
+        "ERR"
+      ],
+      "statusCode": 404,
+      "method": "DELETE",
+      "body": "{\"success\":false}",
+      "header": {
+        "Content-Type": "text/html; charset=UTF-8"
+      }
+    },
+    "GET": {
+      "route": "/users/[userid]",
+      "routeVars": [
+        "userid"
+      ],
+      "normalizedRoute": "/users/:userid",
+      "isExtended": false,
+      "filename": "[userid].json",
+      "fileContent": "{\n  \"testUserId\": \"(number)[userid]\"\n}",
+      "stateVars": [],
+      "statusCode": 200,
+      "method": "GET",
+      "body": "{\n  \"testUserId\": \"(number)[userid]\"\n}"
+    }
+  }
+}
