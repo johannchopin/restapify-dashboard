@@ -6,8 +6,10 @@
 </script>
 
 <div class="route">
-  <MethodBadge method={route.method} />
-  <h2>{route.route}</h2>
+  <div class="d-flex badge-ctn">
+    <MethodBadge method={route.method} />
+  </div>
+  <h3 class="text-truncate">{route.route}</h3>
 </div>
 
 <style>
@@ -16,7 +18,15 @@
     align-items: center;
   }
 
+  .badge-ctn {
+    min-width: 3.5em;
+  }
+
   .route :global(.badge.method) {
     margin-right: 5px;
+  }
+
+  h3 {
+    margin: 0;
   }
 </style>
