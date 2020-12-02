@@ -1,4 +1,4 @@
-<script  lang="ts">
+<script lang="ts">
   import MethodBadge from './MethodBadge.svelte'
   import type { RouteResponse } from '../types'
 

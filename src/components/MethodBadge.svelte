@@ -1,7 +1,7 @@
 <script  lang="ts">
   import type { HttpMethod } from '../types'
 
-export let method: HttpMethod
+  export let method: HttpMethod
 
   const getBadgeBgClass = (): string => {
     switch (method) {
@@ -27,11 +27,6 @@ export let method: HttpMethod
         return method
     }
   }
-
 </script>
 
 <span class={`badge ${getBadgeBgClass()} method`}>{getMethodName()}</span>
-
-<style>
-
-</style>
