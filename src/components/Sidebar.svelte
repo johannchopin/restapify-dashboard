@@ -1,5 +1,7 @@
 <script lang="ts">
-	import Route from './Route.svelte'
+  import Route from './Route.svelte'
+  
+  import { getRouteSectionId } from '../utils'
 
   // S T O R E S
   import { routes as routesStore } from '../stores'
@@ -9,7 +11,7 @@
 
   let routes: GetRoutesResponse | null = null
 
-	const routesStoreUnsubscribe = routesStore.subscribe(value => {
+	routesStore.subscribe(value => {
 		routes = value
 	})
 </script>
@@ -21,14 +23,9 @@
       {#each Object.keys(routes) as route}
         {#each Object.keys(routes[route]) as method}
           <li class="list-group-item">
-            <Route route={{...routes[route][method], method}} />
-          </li>
-        {/each}
-      {/each}
-      {#each Object.keys(routes) as route}
-        {#each Object.keys(routes[route]) as method}
-          <li class="list-group-item">
-            <Route route={{...routes[route][method], method}} />
+            <a href={`#${getRouteSectionId(routes[route][method])}`}>
+              <Route route={{...routes[route][method], method}} />
+            </a>
           </li>
         {/each}
       {/each}

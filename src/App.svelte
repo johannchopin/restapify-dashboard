@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import Route from './components/Route.svelte'
+	import RouteSection from './components/RouteSection.svelte'
 	import Sidebar from './components/Sidebar.svelte'
 
 	// S T O R E S
@@ -14,7 +14,7 @@
 	let routes: GetRoutesResponse | null = null
 	let isSidebarToggled = true
 
-	const routesStoreUnsubscribe = routesStore.subscribe(value => {
+	routesStore.subscribe(value => {
 		routes = value
 	})
 
@@ -75,7 +75,7 @@
 			{#if routes}
 				{#each Object.keys(routes) as route}
 					{#each Object.keys(routes[route]) as method}
-						<Route route={{...routes[route][method], method}} />
+						<RouteSection route={{...routes[route][method], method}} />
 					{/each}
 				{/each}
 			{/if}	
@@ -86,7 +86,12 @@
 <style>
 	#wrapper {
 		overflow-x: hidden;
-		max-height: 100%;
+		height: 100%;
+	}
+
+	#content {
+		height: 100%;
+    overflow: scroll;
 	}
 
 	#page-content-wrapper {
