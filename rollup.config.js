@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser'
 import sveltePreprocess from 'svelte-preprocess'
 import typescript from '@rollup/plugin-typescript'
 import css from 'rollup-plugin-css-only'
+import inlineSvg from 'rollup-plugin-inline-svg';
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -50,6 +51,8 @@ export default {
       },
       preprocess: sveltePreprocess()
     }),
+
+    inlineSvg(),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
