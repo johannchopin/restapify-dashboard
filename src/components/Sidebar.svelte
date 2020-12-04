@@ -33,7 +33,7 @@
   </ul>
 </div>
 
-<style>
+<style lang="scss">
 	#sidebar-wrapper {
 		min-height: 100vh;
 		margin-left: -15rem;
