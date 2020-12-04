@@ -2,6 +2,8 @@
   import Route from './Route.svelte'
   import LinkToCopy from './LinkToCopy.svelte'
 
+  import type { RouteResponse } from "../types"
+
   import { getRouteSectionId } from '../utils'
 
   export let route: RouteResponse

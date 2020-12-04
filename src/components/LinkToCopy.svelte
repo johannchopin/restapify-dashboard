@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from './Icon/Icon.svelte'
 
-  export let link
+  export let link: string
 
   const onClick = (): void => {
     navigator.clipboard.writeText(link)
