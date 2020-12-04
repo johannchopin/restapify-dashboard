@@ -14,10 +14,11 @@
 
 <style>
   a {
-    font-size: 1.5em;
+    font-size: 1.2em;
     background: transparent;
     border: none;
     padding: 0;
     margin: 0;
+    margin-right: .2em;
   }
 </style>
