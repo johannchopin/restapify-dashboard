@@ -83,7 +83,9 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
+	@import "./custom.scss";
+
 	#wrapper {
 		overflow-x: hidden;
 		height: 100%;
