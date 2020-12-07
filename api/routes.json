@@ -229,6 +229,20 @@
       "statusCode": 200,
       "method": "GET",
       "body": "{\n  \"testUserId\": \"(number)[userid]\"\n}"
+    },
+    "PUT": {
+      "route": "/users/[userid]",
+      "routeVars": [
+        "userid"
+      ],
+      "normalizedRoute": "/users/:userid",
+      "isExtended": false,
+      "filename": "[userid].json",
+      "fileContent": "{}",
+      "stateVars": [],
+      "statusCode": 201,
+      "method": "PUT",
+      "body": "{}"
     }
   }
 }
