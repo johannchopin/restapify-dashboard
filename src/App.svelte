@@ -3,6 +3,8 @@
 	import RouteSection from './components/RouteSection.svelte'
 	import Sidebar from './components/Sidebar.svelte'
 
+  import { METHODS } from './const'
+
 	// S T O R E S
 	import { routes as routesStore } from './stores'
 
@@ -74,8 +76,10 @@
 		<div class="container-fluid" id="content">
 			{#if routes}
 				{#each Object.keys(routes) as route}
-					{#each Object.keys(routes[route]) as method}
-						<RouteSection route={{...routes[route][method], method}} />
+        	{#each METHODS as method}
+          	{#if routes[route][method]}
+							<RouteSection route={{...routes[route][method], method}} />
+						{/if}	
 					{/each}
 				{/each}
 			{/if}	

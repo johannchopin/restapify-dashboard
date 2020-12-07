@@ -1,6 +1,7 @@
 <script lang="ts">
   import Route from './Route.svelte'
-  
+  import { METHODS } from '../const'
+
   import { getRouteSectionId } from '../utils'
 
   // S T O R E S
@@ -13,7 +14,7 @@
 
 	routesStore.subscribe(value => {
 		routes = value
-	})
+  })
 </script>
 
 <div class="bg-light border-right" id="sidebar-wrapper">
@@ -21,12 +22,14 @@
   <ul class="list-group">
     {#if routes}
       {#each Object.keys(routes) as route}
-        {#each Object.keys(routes[route]) as method}
-          <li class="list-group-item">
-            <a href={`#${getRouteSectionId(routes[route][method])}`}>
-              <Route route={{...routes[route][method], method}} />
-            </a>
-          </li>
+        {#each METHODS as method}
+          {#if routes[route][method]}
+            <li class="list-group-item">
+              <a href={`#${getRouteSectionId(routes[route][method])}`}>
+                <Route route={{...routes[route][method], method}} />
+              </a>
+            </li>
+          {/if}
         {/each}
       {/each}
     {/if}	
