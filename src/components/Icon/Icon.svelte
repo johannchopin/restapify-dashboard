@@ -1,19 +1,20 @@
 <script lang="ts">
   import link from './icons/link.svg'
+  import github from './icons/github.svg'
+  import circleHalf from './icons/circle-half.svg'
 
   let className = ''
-  let icon
 
-  export let name: string
+  type Name = 'link' | 'github' | 'circle-half'
+
+  export let name: Name = 'github'
   export { className as class }
 
-  $: switch (name) {
-    case 'link':
-      icon = link
-      break
-  
-    default:
-      break
+
+  const icons: {[name in Name]: any} = {
+    'circle-half': circleHalf,
+    'link': link,
+    'github': github
   }
 </script>
 
@@ -28,5 +29,5 @@
 </style>
 
 <i class={`icon ${className}`}>
-  {@html icon}
+  {@html icons[name]}
 </i>
