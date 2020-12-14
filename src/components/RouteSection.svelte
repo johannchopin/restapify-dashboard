@@ -4,20 +4,29 @@
   import StateBtn from './StateBtn.svelte'
 
 	import api from '../axiosStore'
-	import { states as statesStore} from '../stores'
+	import { states as statesStore } from '../stores'
   import type { RouteResponse } from '../types'
 
   import { getRouteSectionId } from '../utils'
 
   export let route: RouteResponse
 
-  
+  let states = null
   let selectedState = null // TODO: Get it from api response
-  let states
-  
-  statesStore.suscribe(value => {
+  let checkedState = null // TODO: Get it from api response
+  let matchingState = null
+
+  statesStore.subscribe(value => {
     states = value
+    matchingState = statesStore.getStateForRoute(value, route.route, route.method)
   })
+
+  $: {
+    if (matchingState) {
+      selectedState = matchingState.state
+      checkedState = matchingState.state
+    }
+  }
 
   $: statusCode = selectedState ? route.states[selectedState].statusCode : route.statusCode
   $: body = selectedState ? route.states[selectedState].body : route.body
@@ -35,13 +44,19 @@
     
     return 'text-danger'
   }
-  const onCheckState = () => {
-    api.put('/states', {
-      route: route.route,
-      state: selectedState
-    }).then(({ status }) => {
-      alert(status)
+  const onCheckState = (state): void => {
+    const updatedState = state ? 
+      {
+        route: route.route,
+        state,
+        method: route.method
+      } : { route: route.route }
+
+    api.put('/states', updatedState).then(({ status }) => {
+      console.log(status)
     })
+
+    checkedState = state
   }
 
   const onClickState = (state) => {
@@ -67,9 +82,10 @@
         <div class="btn-group-vertical">
           <StateBtn 
             value="Default" 
-            selected={selectedState === null  } 
+            selected={selectedState === null} 
+            checked={checkedState === null}
             sectionId={sectionId} 
-            onCheckState={onCheckState} 
+            onCheckState={() => { onCheckState(null) }} 
             onClickState={() => onClickState(null)}
           />
           {#each Object.keys(route.states) as state}
@@ -77,7 +93,8 @@
               value={state} 
               sectionId={sectionId} 
               selected={selectedState === state} 
-              onCheckState={onCheckState} 
+              checked={checkedState === state}
+              onCheckState={() => { onCheckState(state) }} 
               onClickState={() => { onClickState(state) }}
             />
           {/each}
