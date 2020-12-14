@@ -9,18 +9,18 @@
   })
 </script>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light pl-4 pr-4">
   <h1>
     <a class="navbar-brand" href="/">Restapify</a>
   </h1>
-  <ul class="navbar-nav ml-auto nav-flex-icons">
+  <ul class="d-flex ml-auto mb-0">
     <li class="nav-item">
       <a class="nav-link" href="https://github.com/johannchopin/restapify" target="_blank">
         <Icon name='github' />
       </a>
     </li>
     <li class="nav-item">
-      <button id="toggleTheme" class="nav-link" on:click={themeStore.toggleMode}>
+      <button id="toggleTheme" class="nav-link mb-0" on:click={themeStore.toggleMode}>
         <Icon name='circle-half' class={`${theme.mode}`}/>
       </button>
     </li>
@@ -28,8 +28,10 @@
 </nav>
 
 <style lang="scss">
-  .navbar-nav {
+  ul {
     li {
+      list-style-type: none;
+
       #toggleTheme {
         border: none;
 

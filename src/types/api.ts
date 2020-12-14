@@ -11,6 +11,17 @@ export interface RouteResponse {
   routeVars: string[]
   stateVars: string[]
   statusCode: number
+  states?: {
+    [state: string]: Pick<RouteResponse, 'fileContent'
+      | 'statusCode'
+      | 'body'
+    >
+  }
+}
+export interface StateResponse {
+  route: string
+  state: string
+  method?: HttpMethod
 }
 
 export interface GetRoutesResponse {
@@ -19,4 +30,4 @@ export interface GetRoutesResponse {
   }
 }
 
-export interface GetStateResponse {}
+export type GetStatesResponse = StateResponse[]
