@@ -7,7 +7,7 @@
   import { METHODS } from './const'
 
 	// S T O R E S
-	import { routes as routesStore, states as stateStore } from './stores'
+	import { routes as routesStore, states as statesStore } from './stores'
 
 	// T Y P E S
 	import type { GetRoutesResponse, GetStatesResponse } from './types'
