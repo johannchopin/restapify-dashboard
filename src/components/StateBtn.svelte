@@ -1,10 +1,10 @@
 <script lang="ts">
   export let selected = false
   export let checked = false
-  export let value
-  export let sectionId
-  export let onCheckState
-  export let onClickState
+  export let value: string
+  export let sectionId: string
+  export let onCheckState: () => void
+  export let onClickState: () => void
 </script>
 
 <button 
