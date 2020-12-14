@@ -7,10 +7,10 @@
   import { METHODS } from './const'
 
 	// S T O R E S
-	import { routes as routesStore } from './stores'
+	import { routes as routesStore, states as stateStore } from './stores'
 
 	// T Y P E S
-	import type { GetRoutesResponse } from './types'
+	import type { GetRoutesResponse, GetStatesResponse } from './types'
 
 	import api from './axiosStore'
 
@@ -21,14 +21,29 @@
 		routes = value
 	})
 
-	onMount(async () => {
-		api.get<GetRoutesResponse>('/routes')
-		.then(function (response) {
+	const fetchRoutes = (): void => {
+	api.get<GetRoutesResponse>('/routes')
+		.then((response) => {
 			routesStore.set(response.data)
 		})
-		.catch(function (error) {
+		.catch((error) => {
 			console.log(error);
 		})
+	}
+
+	const fetchStates = (): void => {
+		api.get<GetStatesResponse>('/states')
+		.then((response) => {
+			statesStore.set(response.data)
+		})
+		.catch((error) => {
+			console.log(error);
+		})
+	}
+
+	onMount(async () => {
+		fetchRoutes()
+		fetchStates()
 	})
 </script>
 

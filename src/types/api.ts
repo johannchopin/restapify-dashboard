@@ -12,6 +12,11 @@ export interface RouteResponse {
   stateVars: string[]
   statusCode: number
 }
+export interface StatesResponse {
+  route: string
+  state: string
+  method?: HttpMethod
+}
 
 export interface GetRoutesResponse {
   [route: string]: {
@@ -19,4 +24,4 @@ export interface GetRoutesResponse {
   }
 }
 
-export interface GetStateResponse {}
+export type GetStatesResponse = StatesResponse[]
