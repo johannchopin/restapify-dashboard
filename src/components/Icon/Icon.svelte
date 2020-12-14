@@ -20,6 +20,7 @@
 
 <style lang="scss">
   .icon {
+    display: flex;
     width: 1em;
 
     :global(svg) {
