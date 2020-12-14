@@ -181,6 +181,20 @@
       "body": "{\"success\":true,\"data\":{\"id\":67,\"name\":\"bob\"}}",
       "header": {
         "Content-Type": "text/html; charset=utf-8"
+      },
+      "states": {
+        "INV_INPUT": {
+          "body": "{\n  \"success\": false,\n  \"error\": \"invalid\"\n}",
+          "fileContent": "{\n  \"success\": false,\n  \"error\": \"invalid\"\n}",
+          "isExtended": false,
+          "statusCode": 400
+        },
+        "INV_CRED": {
+          "body": "{\n  \"success\": false,\n  \"error\": \"invalid\"\n}",
+          "fileContent": "{\n  \"success\": false,\n  \"error\": \"invalid\"\n}",
+          "isExtended": false,
+          "statusCode": 401
+        }
       }
     },
     "GET": {
@@ -197,26 +211,15 @@
     }
   },
   "/users/[userid]": {
-    "DELETE": {
-      "route": "/users/[userid]",
-      "routeVars": [
-        "userid"
-      ],
-      "normalizedRoute": "/users/:userid",
-      "isExtended": true,
-      "filename": "[userid].DELETE.404.{ERR}.json",
-      "fileContent": "{\n  \"__header\": {\n    \"Content-Type\": \"text/html; charset=UTF-8\"\n  },\n  \"__body\": {\n    \"success\": false\n  }\n}",
-      "stateVars": [
-        "ERR"
-      ],
-      "statusCode": 404,
-      "method": "DELETE",
-      "body": "{\"success\":false}",
-      "header": {
-        "Content-Type": "text/html; charset=UTF-8"
-      }
-    },
     "GET": {
+      "states": {
+        "ERR": {
+          "body": "{\n  \"success\": false,\n  \"test\": \"error\"\n}",
+          "fileContent": "{\n  \"success\": false,\n  \"test\": \"error\"\n}",
+          "isExtended": false,
+          "statusCode": 404
+        }
+      },
       "route": "/users/[userid]",
       "routeVars": [
         "userid"
@@ -230,19 +233,45 @@
       "method": "GET",
       "body": "{\n  \"testUserId\": \"(number)[userid]\"\n}"
     },
-    "PUT": {
+    "DELETE": {
+      "states": {
+        "INV_CRED": {
+          "body": "{}",
+          "fileContent": "{}",
+          "isExtended": false,
+          "statusCode": 401
+        },
+        "INV_TOKEN": {
+          "body": "{}",
+          "fileContent": "{}",
+          "isExtended": false,
+          "statusCode": 401
+        },
+        "ERR": {
+          "body": "{\"success\":false}",
+          "fileContent": "{\n  \"__header\": {\n    \"Content-Type\": \"text/html; charset=UTF-8\"\n  },\n  \"__body\": {\n    \"success\": false\n  }\n}",
+          "header": {
+            "Content-Type": "text/html; charset=UTF-8"
+          },
+          "isExtended": true,
+          "statusCode": 404
+        }
+      },
       "route": "/users/[userid]",
       "routeVars": [
         "userid"
       ],
       "normalizedRoute": "/users/:userid",
-      "isExtended": false,
-      "filename": "[userid].json",
-      "fileContent": "{}",
+      "isExtended": true,
+      "filename": "[userid].DELETE.json",
+      "fileContent": "{\n  \"__header\": {\n    \"Content-Type\": \"text/html; charset=UTF-8\"\n  },\n  \"__body\": {\n    \"success\": false\n  }\n}",
       "stateVars": [],
-      "statusCode": 201,
-      "method": "PUT",
-      "body": "{}"
+      "statusCode": 404,
+      "method": "DELETE",
+      "body": "{\"success\":false}",
+      "header": {
+        "Content-Type": "text/html; charset=UTF-8"
+      }
     }
   }
 }
