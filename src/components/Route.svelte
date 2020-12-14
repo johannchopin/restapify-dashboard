@@ -19,7 +19,7 @@
   }
 
   .badge-ctn {
-    min-width: 3.5em;
+    min-width: 2.7em;
   }
 
   .route :global(.badge.method) {

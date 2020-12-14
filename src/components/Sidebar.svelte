@@ -18,7 +18,6 @@
 </script>
 
 <div class="bg-light border-right" id="sidebar-wrapper">
-  <h1 class="sidebar-heading">Restapify</h1>
   <ul class="list-group">
     {#if routes}
       {#each Object.keys(routes) as route}
@@ -43,8 +42,14 @@
 		transition: margin .25s ease-out;
   }
   
-  #sidebar-wrapper :global(.route h3) {
-    font-size: .9em;
+  #sidebar-wrapper :global(.route)  {
+    :global(h3) {
+      font-size: .7em;
+    }
+
+    :global(.badge) {
+      font-size: .6em;
+    }
   }
 
 	#sidebar-wrapper .sidebar-heading {

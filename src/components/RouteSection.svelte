@@ -24,7 +24,7 @@
 </script>
 
 <section class="route">
-  <header class="d-flex" id={sectionId}>
+  <header class="d-flex mb-3" id={sectionId}>
     <LinkToCopy link={window.location.origin + '#' + sectionId} />
     <Route route={route} />
     <p class={`status ${getStatusColor()} font-weight-bold`}>{route.statusCode}</p>
