@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
+	import { atomOneDark } from "svelte-highlight/styles"
+
 	import RouteSection from './components/RouteSection.svelte'
 	import Navbar from './components/Navbar.svelte'
 	import Sidebar from './components/Sidebar.svelte'
@@ -46,6 +48,10 @@
 		fetchStates()
 	})
 </script>
+
+<svelte:head>
+  {@html atomOneDark}
+</svelte:head>
 
 <Navbar />
 <div class="d-flex" class:toggled={isSidebarToggled} id="wrapper">

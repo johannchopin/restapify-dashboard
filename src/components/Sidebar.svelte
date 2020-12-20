@@ -9,7 +9,7 @@
   import { routes as routesStore } from '../stores'
 
   // T Y P E S
-  import type { GetRoutesResponse, RouteResponse, HttpMethod } from '../types'
+  import type { GetRoutesResponse, RouteResponse } from '../types'
 
   let routes: GetRoutesResponse | null = null
   let filters = null
