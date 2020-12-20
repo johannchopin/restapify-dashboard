@@ -5,7 +5,8 @@
   import StateBtn from './StateBtn.svelte'
 
 	import api from '../axiosStore'
-	import { states as statesStore } from '../stores'
+  import { states as statesStore, alert as alertStore } from '../stores'
+  
   import type { RouteResponse } from '../types'
 
   import { getRouteSectionId } from '../utils'
@@ -43,7 +44,9 @@
       } : { route: route.route }
 
     api.put('/states', updatedState).then(({ status }) => {
-      console.log(status)
+      if (status === 204) {
+        alertStore.show({type: 'success', message: 'State has been updated!'})
+      }
     })
 
     checkedState = state

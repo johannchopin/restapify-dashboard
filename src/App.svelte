@@ -5,6 +5,7 @@
 	import RouteSection from './components/RouteSection.svelte'
 	import Navbar from './components/Navbar.svelte'
 	import Sidebar from './components/Sidebar.svelte'
+	import AlertToast from './components/AlertToast.svelte'
 
   import { METHODS } from './const'
 
@@ -70,6 +71,7 @@
 		</div>
 	</div>
 </div>
+<AlertToast />
 
 <style lang="scss">
 	@import "./custom.scss";
