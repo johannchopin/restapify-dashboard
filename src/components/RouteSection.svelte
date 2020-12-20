@@ -1,8 +1,6 @@
 <script  lang="ts">
-  import { Highlight } from 'svelte-highlight'
-  import { json } from 'svelte-highlight/languages'
-
   import Route from './Route.svelte'
+  import RouteDataTable from './RouteDataTable.svelte'
   import LinkToCopy from './LinkToCopy.svelte'
   import StateBtn from './StateBtn.svelte'
 
@@ -15,8 +13,8 @@
   export let route: RouteResponse
 
   let states = null
-  let selectedState = null // TODO: Get it from api response
-  let checkedState = null // TODO: Get it from api response
+  let selectedState = null
+  let checkedState = null
   let matchingState = null
 
   statesStore.subscribe(value => {
@@ -36,17 +34,6 @@
 
   const sectionId = getRouteSectionId(route)
 
-  const getStatusColor = (statusCode): string => {
-    if (statusCode < 300) {
-      return 'text-success'
-    } 
-    
-    if (statusCode < 400) {
-      return 'text-warning'
-    } 
-    
-    return 'text-danger'
-  }
   const onCheckState = (state): void => {
     const updatedState = state ? 
       {
@@ -71,14 +58,11 @@
   <header class="d-flex mb-3" id={sectionId}>
     <LinkToCopy link={window.location.origin + '#' + sectionId} />
     <Route route={route} />
-    <p class={`status ${getStatusColor(statusCode)} font-weight-bold`}>
-      {statusCode}
-    </p>
   </header>
 
   <div class="route-body d-flex">
     <div class="route-content w-100">
-      <Highlight language={json} code={body} class="rounded" />
+      <RouteDataTable {body} {statusCode} />
     </div>
     {#if route.states}
       <div class="route-states">
@@ -130,7 +114,9 @@
     margin-bottom: 0;
   }
 
-  .status {
-    margin-left: 2em;
+  .route-body {
+    :global(.hljs) {
+      max-width: 40vw;
+    }
   }
 </style>
