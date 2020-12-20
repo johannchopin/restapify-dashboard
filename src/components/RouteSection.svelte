@@ -1,4 +1,7 @@
 <script  lang="ts">
+  import { Highlight } from 'svelte-highlight'
+  import { json } from 'svelte-highlight/languages'
+
   import Route from './Route.svelte'
   import LinkToCopy from './LinkToCopy.svelte'
   import StateBtn from './StateBtn.svelte'
@@ -75,7 +78,7 @@
 
   <div class="route-body d-flex">
     <div class="route-content w-100">
-      <code><pre>{body}</pre></code>
+      <Highlight language={json} code={body} class="rounded" />
     </div>
     {#if route.states}
       <div class="route-states">
