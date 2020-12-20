@@ -34,7 +34,7 @@
 
   const sectionId = getRouteSectionId(route)
 
-  const onCheckState = (state): void => {
+  const onCheckState = (state: string): void => {
     const updatedState = state ? 
       {
         route: route.route,
@@ -49,7 +49,7 @@
     checkedState = state
   }
 
-  const onClickState = (state) => {
+  const onClickState = (state: string) => {
     selectedState = state
   }
 </script>

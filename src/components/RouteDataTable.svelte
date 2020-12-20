@@ -5,15 +5,15 @@
   export let statusCode: number
   export let body: string
 
-  const getStatusColor = (statusCode): string => {
+  const getStatusColor = (statusCode: number): string => {
     if (statusCode < 300) {
       return 'text-success'
-    } 
-    
+    }
+
     if (statusCode < 400) {
       return 'text-warning'
-    } 
-    
+    }
+
     return 'text-danger'
   }
 </script>
