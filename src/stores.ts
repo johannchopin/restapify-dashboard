@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { GetRoutesResponse, Theme, GetStatesResponse, StateResponse, HttpMethod } from './types';
+import type { GetRoutesResponse, Theme, GetStatesResponse, StateResponse, HttpMethod, Mode } from './types';
 
 interface AlertStore {
 	show: boolean
@@ -8,11 +8,19 @@ interface AlertStore {
 }
 
 const createThemeStore = () => {
-  const { subscribe, update } = writable<Theme>({ mode: 'light' })
+  const { subscribe, update } = writable<Theme>({ 
+		mode: localStorage.getItem('mode') as Mode || 'light' 
+	})
 
   return {
 		subscribe,
-		toggleMode: () => update(value => ({...value, mode: value.mode === 'light' ? 'dark' : 'light'})),
+		toggleMode: () => {
+			return update(value => {
+					const mode = value.mode === 'light' ? 'dark' : 'light'
+					localStorage.setItem('mode', mode)
+					return {...value, mode }
+				})
+			}
 	}
 }
 

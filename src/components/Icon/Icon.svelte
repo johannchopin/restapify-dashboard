@@ -24,6 +24,10 @@
     display: flex;
     width: 1em;
 
+    &.dark {
+      color: white;
+    }
+
     :global(svg) {
       width: 1em;
     }

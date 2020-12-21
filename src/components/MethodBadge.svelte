@@ -30,3 +30,9 @@
 </script>
 
 <span class={`badge ${getBadgeBgClass()} method`}>{getMethodName()}</span>
+
+<style>
+  .badge {
+    text-shadow: 1px 1px 1px black;
+  }
+</style>

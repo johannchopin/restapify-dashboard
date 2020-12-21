@@ -1,5 +1,7 @@
 <script lang="ts">
   import Icon from './Icon/Icon.svelte'
+  import { theme as themeStore } from '../stores'
+
   export let onInput: (value: string) => void
 
   let value = ''
@@ -13,7 +15,7 @@
     type="text"
     placeholder="Search for a route..."
     bind:value={value}
-    class="form-control rounded m-0"
+    class={`form-control rounded bg-${$themeStore.mode} m-0`}
   />
   <button class="btn m-0 p-0" class:visible={value !== ''} type="button" on:click={() => {value = ''}}>
     <Icon name='close' />
