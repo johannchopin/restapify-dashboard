@@ -103,8 +103,15 @@
     align-items: center;
 
     :global(.link-to-copy) {
-        visibility: hidden;
+      visibility: hidden;
+    }
+
+    :global(.route) {
+      :global(.badge.method) {
+        font-size: 1em;
+        margin-right: 1em;
       }
+    }
 
     &:hover {
       :global(.link-to-copy) {
