@@ -6,7 +6,7 @@
   import { getRouteSectionId } from '../utils'
 
   // S T O R E S
-  import { routes as routesStore } from '../stores'
+  import { routes as routesStore, theme as themeStore } from '../stores'
 
   // T Y P E S
   import type { GetRoutesResponse, RouteResponse } from '../types'
@@ -34,7 +34,7 @@
   }
 </script>
 
-<div class="bg-light border-right d-flex flex-column" id="sidebar-wrapper">
+<div class={`bg-${$themeStore.mode} border-right d-flex flex-column`} id="sidebar-wrapper">
   <Searchbar onInput={setFilter} />
   <ul class="list-group">
     {#if routes}

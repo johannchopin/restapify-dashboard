@@ -1,27 +1,21 @@
 <script lang="ts">
   import Icon from './Icon/Icon.svelte'
   import { theme as themeStore } from '../stores'
-
-  let theme
-
-  themeStore.subscribe(value => {
-		theme = value
-  })
 </script>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light pl-4 pr-4">
+<nav class={`navbar navbar-expand-lg pl-4 pr-4 navbar-${$themeStore.mode} bg-${$themeStore.mode}`}>
   <h1>
     <a class="navbar-brand" href="/">Restapify</a>
   </h1>
   <ul class="d-flex ml-auto mb-0">
     <li class="nav-item">
       <a class="nav-link" href="https://github.com/johannchopin/restapify" target="_blank">
-        <Icon name='github' />
+        <Icon name='github' class={`${$themeStore.mode}`} />
       </a>
     </li>
     <li class="nav-item">
-      <button id="toggleTheme" class="nav-link mb-0" on:click={themeStore.toggleMode}>
-        <Icon name='circle-half' class={`${theme.mode}`}/>
+      <button id="toggleTheme" class="btn mb-0" on:click={themeStore.toggleMode}>
+        <Icon name='circle-half' class={`${$themeStore.mode}`} />
       </button>
     </li>
   </ul>
@@ -37,9 +31,6 @@
 
         :global(.icon) {
           transform: rotate(-135deg);
-        }
-        :global(.icon.dark) {
-          transform: rotate(45deg);
         }
       }
     }

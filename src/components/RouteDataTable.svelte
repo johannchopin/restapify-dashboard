@@ -2,6 +2,8 @@
   import { Highlight } from 'svelte-highlight'
   import { json } from 'svelte-highlight/languages'
 
+  import { theme as themeStore } from '../stores'
+
   export let statusCode: number
   export let body: string
 
@@ -18,7 +20,7 @@
   }
 </script>
 
-<table class="table table-striped table-bordered">
+<table class={`table table-striped table-bordered table-${$themeStore.mode}`}>
   <tbody>
     <tr>
       <th scope="row">status code</th>

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { theme as themeStore } from '../stores'
+
   export let selected = false
   export let checked = false
   export let value: string
@@ -8,9 +10,10 @@
 </script>
 
 <button 
-  class="btn d-flex align-items-center m-0" 
-  class:btn-secondary={!selected} 
+  class="btn d-flex align-items-center m-0"
+  class:btn-secondary={!selected && $themeStore.mode === 'light'} 
   class:btn-primary={selected} 
+  class:btn-outline-light={!selected && $themeStore.mode === 'dark'}
   on:click={onClickState}
 >
   <input 

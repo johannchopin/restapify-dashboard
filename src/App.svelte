@@ -10,7 +10,7 @@
   import { METHODS } from './const'
 
 	// S T O R E S
-	import { routes as routesStore, states as statesStore } from './stores'
+	import { routes as routesStore, states as statesStore, theme as themeStore } from './stores'
 
 	// T Y P E S
 	import type { GetRoutesResponse, GetStatesResponse } from './types'
@@ -57,7 +57,7 @@
 <Navbar />
 <div class="d-flex" class:toggled={isSidebarToggled} id="wrapper">
 	<Sidebar />
-	<div id="page-content-wrapper" class="border-top">
+	<div id="page-content-wrapper" class={`border-top bg-${$themeStore.mode}`}>
 		<div class="container-fluid" id="content">
 			{#if routes}
 				{#each Object.keys(routes) as route}
