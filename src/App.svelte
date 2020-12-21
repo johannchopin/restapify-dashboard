@@ -90,4 +90,18 @@
 	#page-content-wrapper {
 		width: 100%;
 	}
+
+	:global(.bg-dark) {
+		color: $white;
+
+		:global(.form-control) { 
+			color: $white!important;
+		}
+
+		:global(.list-group) {
+			:global(.list-group-item) {
+				background-color: $dark!important;
+			}
+		}
+	}
 </style>
