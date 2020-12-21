@@ -11,10 +11,12 @@ export interface RouteResponse {
   routeVars: string[]
   stateVars: string[]
   statusCode: number
+  header?: {[key: string]: string | number}
   states?: {
     [state: string]: Pick<RouteResponse, 'fileContent'
       | 'statusCode'
       | 'body'
+      | 'header'
     >
   }
 }

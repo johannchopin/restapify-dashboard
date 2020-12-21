@@ -2,9 +2,12 @@
   import { Highlight } from 'svelte-highlight'
   import { json } from 'svelte-highlight/languages'
 
+  import type { RouteResponse } from '../types'
+
   import { theme as themeStore } from '../stores'
 
   export let statusCode: number
+  export let header: RouteResponse['header']
   export let body: string
 
   const getStatusColor = (statusCode: number): string => {
@@ -30,6 +33,14 @@
         </p>
     </td>
     </tr>
+    {#if header}
+       <tr>
+        <th scope="row">header</th>
+        <td class="w-100">
+          <Highlight language={json} code={JSON.stringify(header, null, 2)} class="rounded m-0" />
+        </td>
+      </tr>
+    {/if}
     <tr>
       <th scope="row">body</th>
       <td class="w-100">
