@@ -57,7 +57,7 @@
 <Navbar />
 <div class="d-flex" class:toggled={isSidebarToggled} id="wrapper">
 	<Sidebar />
-	<div id="page-content-wrapper">
+	<div id="page-content-wrapper" class="border-top">
 		<div class="container-fluid" id="content">
 			{#if routes}
 				{#each Object.keys(routes) as route}
