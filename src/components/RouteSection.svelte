@@ -102,6 +102,7 @@
 
   header {
     align-items: center;
+    padding-top: 2em;
 
     :global(.link-to-copy) {
       visibility: hidden;
