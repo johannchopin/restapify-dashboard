@@ -3,7 +3,7 @@
   import { theme as themeStore } from '../stores'
 </script>
 
-<nav class={`navbar navbar-expand-lg pl-4 pr-4 navbar-${$themeStore.mode} bg-${$themeStore.mode}`}>
+<nav class={`navbar navbar-expand-lg pl-4 pr-4 navbar-${$themeStore.mode} bg-${$themeStore.mode} shadow`}>
   <h1>
     <a class="navbar-brand" href="/">Restapify</a>
   </h1>
@@ -22,6 +22,13 @@
 </nav>
 
 <style lang="scss">
+  .navbar {
+    &.bg-dark {
+      background: black!important;
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.65)!important;
+    }
+  }
+
   ul {
     li {
       list-style-type: none;
