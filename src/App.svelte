@@ -84,7 +84,8 @@
 
 	#content {
 		height: 100%;
-    overflow: scroll;
+		overflow: scroll;
+		scroll-behavior: smooth;
 	}
 
 	#page-content-wrapper {

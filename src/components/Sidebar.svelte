@@ -36,7 +36,7 @@
 
 <div class={`bg-${$themeStore.mode} border-right d-flex flex-column`} id="sidebar-wrapper">
   <Searchbar onInput={setFilter} />
-  <ul class="list-group">
+  <ul class="list-group pb-3">
     {#if routes}
       {#each Object.keys(routes) as route}
         {#each METHODS as method}
@@ -55,7 +55,6 @@
 
 <style lang="scss">
 	#sidebar-wrapper {
-		min-height: 100vh;
 		margin-left: -15rem;
 		transition: margin .25s ease-out;
   }
