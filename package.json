@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "dev": "concurrently \"rollup -c -w\" \"restapify -d api -b /restapify/api\"",
+    "dev": "concurrently \"rollup -c -w\" \"restapify ./api/ -b /restapify/api\"",
     "start": "sirv public",
     "validate": "svelte-check"
   },
