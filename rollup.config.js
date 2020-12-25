@@ -1,6 +1,7 @@
 import svelte from 'rollup-plugin-svelte'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import replace from '@rollup/plugin-replace';
 import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
 import sveltePreprocess from 'svelte-preprocess'
@@ -40,6 +41,10 @@ export default {
     file: 'public/build/bundle.js'
   },
   plugins: [
+    replace({
+      __NODE_ENV__: production ? JSON.stringify('production') : JSON.stringify('development')
+    }),
+
     css({ output: 'global.bundle.css' }),
     svelte({
       // enable run-time checks when not in production
