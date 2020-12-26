@@ -41,12 +41,14 @@
         </td>
       </tr>
     {/if}
-    <tr>
-      <th scope="row">body</th>
-      <td class="w-100">
-        <Highlight language={json} code={body} class="rounded m-0" />
-      </td>
-    </tr>
+    {#if body}
+      <tr>
+        <th scope="row">body</th>
+        <td class="w-100">
+          <Highlight language={json} code={body} class="rounded m-0" />
+        </td>
+      </tr>
+    {/if}
   </tbody>
 </table>
 
