@@ -236,13 +236,11 @@
     "DELETE": {
       "states": {
         "INV_CRED": {
-          "body": "{}",
           "fileContent": "{}",
           "isExtended": false,
           "statusCode": 401
         },
         "INV_TOKEN": {
-          "body": "{}",
           "fileContent": "{}",
           "isExtended": false,
           "statusCode": 401
