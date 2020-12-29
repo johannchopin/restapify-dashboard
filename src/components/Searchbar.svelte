@@ -34,5 +34,12 @@
     right: 10%;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 3;
+  }
+
+  :global(.bg-dark) {
+    .btn {
+      color: white;
+    }
   }
 </style>
