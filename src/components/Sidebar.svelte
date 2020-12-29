@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Route from './Route.svelte'
-  import Searchbar from './Searchbar.svelte'
+  import Route from './Route'
+  import Searchbar from './Searchbar'
   import { METHODS } from '../const'
 
   import { getRouteSectionId } from '../utils'

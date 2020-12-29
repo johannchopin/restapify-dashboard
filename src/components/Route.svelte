@@ -1,6 +1,6 @@
 <script lang="ts">
-  import MethodBadge from './MethodBadge.svelte'
-  import RouteSlug from './RouteSlug.svelte'
+  import MethodBadge from './MethodBadge'
+  import RouteSlug from './RouteSlug'
   import type { RouteResponse } from '../types'
 
   export let route: RouteResponse
