@@ -5,6 +5,12 @@
   export let onInput: (value: string) => void
 
   let value = ''
+  let inputElement
+
+  const deleteInputValue = () => {
+    value = ''
+    inputElement.focus()
+  }
 
   $: onInput(value)
 </script>
@@ -15,9 +21,10 @@
     type="text"
     placeholder="Search for a route..."
     bind:value={value}
+    bind:this={inputElement}
     class={`form-control rounded bg-${$themeStore.mode} m-0`}
   />
-  <button class="btn m-0 p-0" class:visible={value !== ''} type="button" on:click={() => {value = ''}}>
+  <button class="btn m-0 p-0" class:visible={value !== ''} type="button" on:click={deleteInputValue}>
     <Icon name='close' />
   </button>
 </div>
