@@ -23,6 +23,8 @@
 
 <style lang="scss">
   .navbar {
+    z-index: 1;
+
     &.bg-dark {
       background: black!important;
       box-shadow: 0 .5rem 1rem rgba(0,0,0,.65)!important;
