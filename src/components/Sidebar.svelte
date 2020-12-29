@@ -11,8 +11,19 @@
   // T Y P E S
   import type { GetRoutesResponse, RouteResponse } from '../types'
 
+  const SIDEBAR_WIDTH_LOCALSTORAGE_KEY = 'sidebarWidth'
+
   let routes: GetRoutesResponse | null = null
   let filters = null
+
+  let sidebarLineWidth = 6
+
+  const getSiderbarWith = () => {
+    return localStorage.getItem(SIDEBAR_WIDTH_LOCALSTORAGE_KEY) 
+      || 300 + (sidebarLineWidth / 2) 
+  }
+
+  let sidebarWidth = getSiderbarWith()
 
 	routesStore.subscribe(value => {
 		routes = value
@@ -20,6 +31,10 @@
 
   const setFilter = (value: string) => {
     filters = value.trim().toLowerCase().split(' ')
+  }
+
+  const resizeSidebar = (elmt) => {
+    sidebarWidth = elmt.pageX + (sidebarLineWidth / 2)
   }
 
   const routeMatchFilters = (routesToFilter: RouteResponse, filtersToApply: string[] | null): boolean => {
@@ -32,9 +47,12 @@
     
     return true
   }
+
+  // update sidebar width value in local storage when `sidebarWidth` change
+  $: localStorage.setItem(SIDEBAR_WIDTH_LOCALSTORAGE_KEY, sidebarWidth)
 </script>
 
-<div class={`bg-${$themeStore.mode} border-right d-flex flex-column`} id="sidebar-wrapper">
+<div class={`bg-${$themeStore.mode} border-right d-flex flex-column`} id="sidebar-wrapper" style={`width: ${sidebarWidth}px;`}>
   <Searchbar onInput={setFilter} />
   <ul class="list-group pb-3">
     {#if routes}
@@ -51,11 +69,20 @@
       {/each}
     {/if}	
   </ul>
+  <button class="resize-sidebar-line"
+    on:mousedown={() => {
+      document.addEventListener('mousemove', resizeSidebar)
+    }}
+    on:mouseup={() => {
+      document.removeEventListener('mousemove', resizeSidebar)
+    }}
+  />
 </div>
 
 <style lang="scss">
 	#sidebar-wrapper {
-		margin-left: -15rem;
+    position: relative;
+		min-height: 100vh;
 		transition: margin .25s ease-out;
   }
   
@@ -75,7 +102,6 @@
 	}
 
 	#sidebar-wrapper .list-group {
-    width: 15rem;
     max-height: 100%;
     overflow: scroll;
   }
@@ -83,4 +109,14 @@
   :global(#wrapper.toggled #sidebar-wrapper)  {
 		margin-left: 0;
 	}
+
+  .resize-sidebar-line {
+    position: absolute;
+    height: 100%;
+    width: 6px;
+    right: 0;
+    cursor: col-resize;
+    opacity: 0;
+    transform: translateX(50%);
+  }
 </style>

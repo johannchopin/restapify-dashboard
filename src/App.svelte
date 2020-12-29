@@ -89,7 +89,8 @@
 	}
 
 	#page-content-wrapper {
-		width: 100%;
+		width: 0;
+		flex-grow: 1;
 	}
 
 	:global(.bg-dark) {

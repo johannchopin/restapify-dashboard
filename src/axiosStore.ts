@@ -7,8 +7,8 @@ const port = (__NODE_ENV__ === 'development'
 
 // @ts-ignore
 const baseUrl = (__NODE_ENV__ === 'development' 
-? '/dev/restapify/api' 
-: '/restapify/api')
+  ? '/dev/restapify/api' 
+  : '/restapify/api')
 
 const instance = axios.create({
   baseURL: `http://localhost:${port}${baseUrl}`
