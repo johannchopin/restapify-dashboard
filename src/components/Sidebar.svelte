@@ -14,7 +14,7 @@
   let routes: GetRoutesResponse | null = null
   let filters = null
 
-  let sidebarWidth = 400
+  let sidebarWidth = 300
 
 	routesStore.subscribe(value => {
 		routes = value
@@ -71,7 +71,7 @@
 	#sidebar-wrapper {
     position: relative;
 		min-height: 100vh;
-		margin-left: -15rem;
+    overflow: hidden;
 		transition: margin .25s ease-out;
   }
   
@@ -91,7 +91,6 @@
 	}
 
 	#sidebar-wrapper .list-group {
-    width: 15rem;
     max-height: 100%;
     overflow: scroll;
   }
