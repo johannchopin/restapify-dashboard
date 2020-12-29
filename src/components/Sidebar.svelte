@@ -11,10 +11,19 @@
   // T Y P E S
   import type { GetRoutesResponse, RouteResponse } from '../types'
 
+  const SIDEBAR_WIDTH_LOCALSTORAGE_KEY = 'sidebarWidth'
+
   let routes: GetRoutesResponse | null = null
   let filters = null
 
-  let sidebarWidth = 300
+  let sidebarLineWidth = 6
+
+  const getSiderbarWith = () => {
+    return localStorage.getItem(SIDEBAR_WIDTH_LOCALSTORAGE_KEY) 
+      || 300 + (sidebarLineWidth / 2) 
+  }
+
+  let sidebarWidth = getSiderbarWith()
 
 	routesStore.subscribe(value => {
 		routes = value
@@ -25,7 +34,7 @@
   }
 
   const resizeSidebar = (elmt) => {
-    sidebarWidth = elmt.pageX
+    sidebarWidth = elmt.pageX + (sidebarLineWidth / 2)
   }
 
   const routeMatchFilters = (routesToFilter: RouteResponse, filtersToApply: string[] | null): boolean => {
@@ -38,6 +47,9 @@
     
     return true
   }
+
+  // update sidebar width value in local storage when `sidebarWidth` change
+  $: localStorage.setItem(SIDEBAR_WIDTH_LOCALSTORAGE_KEY, sidebarWidth)
 </script>
 
 <div class={`bg-${$themeStore.mode} border-right d-flex flex-column`} id="sidebar-wrapper" style={`width: ${sidebarWidth}px;`}>
@@ -71,7 +83,6 @@
 	#sidebar-wrapper {
     position: relative;
 		min-height: 100vh;
-    overflow: hidden;
 		transition: margin .25s ease-out;
   }
   
@@ -103,8 +114,9 @@
     position: absolute;
     height: 100%;
     width: 6px;
-    right: -3px;
-    background-color: red;
+    right: 0;
     cursor: col-resize;
+    opacity: 0;
+    transform: translateX(50%);
   }
 </style>
