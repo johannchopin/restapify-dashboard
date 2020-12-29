@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte'
 	import { atomOneDark } from "svelte-highlight/styles"
 
-	import RouteSection from './components/RouteSection.svelte'
-	import Navbar from './components/Navbar.svelte'
-	import Sidebar from './components/Sidebar.svelte'
-	import AlertToast from './components/AlertToast.svelte'
+	import RouteSection from './components/RouteSection'
+	import Navbar from './components/Navbar'
+	import Sidebar from './components/Sidebar'
+	import AlertToast from './components/AlertToast'
 
   import { METHODS } from './const'
 
