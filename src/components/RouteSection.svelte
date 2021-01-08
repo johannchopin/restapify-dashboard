@@ -60,7 +60,7 @@
 
 <section class="route">
   <header class="d-flex mb-3" id={sectionId}>
-    <LinkToCopy link={window.location.origin + '#' + sectionId} />
+    <LinkToCopy link={window.location.href + '#' + sectionId} />
     <Route route={route} />
   </header>
 
