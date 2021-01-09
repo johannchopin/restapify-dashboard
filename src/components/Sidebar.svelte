@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Route from './Route'
-  import Searchbar from './Searchbar'
+  import Route from './Route.svelte'
+  import Searchbar from './Searchbar.svelte'
   import { METHODS } from '../const'
 
   import { getRouteSectionId } from '../utils'
@@ -20,7 +20,7 @@
 
   const getSiderbarWith = () => {
     return localStorage.getItem(SIDEBAR_WIDTH_LOCALSTORAGE_KEY) 
-      || 300 + (sidebarLineWidth / 2) 
+      || (300 + (sidebarLineWidth / 2)).toString()
   }
 
   let sidebarWidth = getSiderbarWith()
@@ -33,8 +33,8 @@
     filters = value.trim().toLowerCase().split(' ')
   }
 
-  const resizeSidebar = (elmt) => {
-    sidebarWidth = elmt.pageX + (sidebarLineWidth / 2)
+  const resizeSidebar = (elmt: MouseEvent) => {
+    sidebarWidth = (elmt.pageX + (sidebarLineWidth / 2)).toString()
   }
 
   const routeMatchFilters = (routesToFilter: RouteResponse, filtersToApply: string[] | null): boolean => {

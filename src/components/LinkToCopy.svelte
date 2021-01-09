@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from './Icon/Icon'
+  import Icon from './Icon/Icon.svelte'
 
   export let link: string
 

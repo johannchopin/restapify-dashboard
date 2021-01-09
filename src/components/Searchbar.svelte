@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Icon from './Icon/Icon'
+  import Icon from './Icon/Icon.svelte'
   import { theme as themeStore } from '../stores'
 
   export let onInput: (value: string) => void
 
   let value = ''
-  let inputElement
+  let inputElement: HTMLInputElement
 
   const deleteInputValue = () => {
     value = ''

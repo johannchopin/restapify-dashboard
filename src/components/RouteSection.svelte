@@ -1,8 +1,8 @@
 <script  lang="ts">
-  import Route from './Route'
-  import RouteDataTable from './RouteDataTable'
-  import LinkToCopy from './LinkToCopy'
-  import StateBtn from './StateBtn'
+  import Route from './Route.svelte'
+  import RouteDataTable from './RouteDataTable.svelte'
+  import LinkToCopy from './LinkToCopy.svelte'
+  import StateBtn from './StateBtn.svelte'
 
 	import api from '../axiosStore'
   import { states as statesStore, alert as alertStore } from '../stores'
