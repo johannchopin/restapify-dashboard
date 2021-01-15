@@ -84,7 +84,7 @@
 
 	#content {
 		height: 100%;
-		overflow: scroll;
+		overflow: auto;
 		scroll-behavior: smooth;
 	}
 

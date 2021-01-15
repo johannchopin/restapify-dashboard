@@ -103,7 +103,7 @@
 
 	#sidebar-wrapper .list-group {
     max-height: 100%;
-    overflow: scroll;
+    overflow: auto;
   }
 
   :global(#wrapper.toggled #sidebar-wrapper)  {
