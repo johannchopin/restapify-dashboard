@@ -82,7 +82,6 @@
 <style lang="scss">
 	#sidebar-wrapper {
     position: relative;
-		min-height: 100vh;
 		transition: margin .25s ease-out;
   }
   
