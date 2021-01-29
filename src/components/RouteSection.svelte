@@ -31,7 +31,7 @@
   }
 
   $: statusCode = selectedState ? route.states[selectedState].statusCode : route.statusCode
-  $: body = selectedState ? route.states[selectedState].body : route.body
+  $: body = selectedState ? route.states[selectedState].fileContent : route.fileContent
   $: header = selectedState ? route.states[selectedState].header : route.header
 
   const sectionId = getRouteSectionId(route)
