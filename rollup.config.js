@@ -1,3 +1,4 @@
+import path from 'path'
 import svelte from 'rollup-plugin-svelte'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
@@ -8,14 +9,25 @@ import sveltePreprocess from 'svelte-preprocess'
 import typescript from '@rollup/plugin-typescript'
 import css from 'rollup-plugin-css-only'
 import inlineSvg from 'rollup-plugin-inline-svg';
+import Restapify from 'restapify'
 
 const production = !process.env.ROLLUP_WATCH
+const apiFolderPath = path.resolve(__dirname, './api')
 
 function serve() {
   let server
+  const rpfy = new Restapify({
+    rootDir: apiFolderPath,
+    baseUrl: '/dev/restapify/api'
+  })
+
+  rpfy.run()
 
   function toExit() {
-    if (server) server.kill(0)
+    if (server) { 
+      server.kill(0)
+      rpfy.close()
+    }
   }
 
   return {
