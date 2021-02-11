@@ -12,7 +12,7 @@
       case 'PUT':
         return 'bg-primary'
       case 'PATCH':
-        return 'bg-light'
+        return 'bg-secondary'
       case 'DELETE':
         return 'bg-danger'
     }
