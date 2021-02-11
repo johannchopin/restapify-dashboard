@@ -59,11 +59,11 @@
       {#each Object.keys(routes) as route}
         {#each METHODS as method}
           {#if routes[route][method] && routeMatchFilters(routes[route][method], filters)}
-            <li class="list-group-item">
-              <a href={`#${getRouteSectionId(routes[route][method])}`}>
+            <a href={`#${getRouteSectionId(routes[route][method])}`}>
+              <li class="list-group-item">
                 <Route route={{...routes[route][method], method}} />
-              </a>
-            </li>
+              </li>
+            </a>
           {/if}
         {/each}
       {/each}
@@ -103,7 +103,18 @@
 	#sidebar-wrapper .list-group {
     max-height: 100%;
     overflow: auto;
+
+    a {
+      display: block;
+      transition: padding-left .3s;
+
+      &:hover {
+        color: inherit;
+        padding-left: 2%;
+      }
+    }
   }
+
 
   :global(#wrapper.toggled #sidebar-wrapper)  {
 		margin-left: 0;
