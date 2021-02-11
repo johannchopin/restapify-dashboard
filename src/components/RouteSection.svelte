@@ -31,7 +31,7 @@
   }
 
   $: statusCode = selectedState ? route.states[selectedState].statusCode : route.statusCode
-  $: body = selectedState ? route.states[selectedState].fileContent : route.fileContent
+  $: fileContent = selectedState ? route.states[selectedState].fileContent : route.fileContent
   $: header = selectedState ? route.states[selectedState].header : route.header
 
   const sectionId = getRouteSectionId(route)
@@ -66,7 +66,7 @@
 
   <div class="route-body d-flex">
     <div class="route-content w-100">
-      <RouteDataTable {body} {statusCode} {header} />
+      <RouteDataTable {fileContent} {statusCode} {header} />
     </div>
     {#if route.states}
       <div class="route-states">

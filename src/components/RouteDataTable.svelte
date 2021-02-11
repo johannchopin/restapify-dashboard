@@ -8,7 +8,7 @@
 
   export let statusCode: number
   export let header: RouteResponse['header']
-  export let body: string
+  export let fileContent: string
 
   const getStatusColor = (statusCode: number): string => {
     if (statusCode < 300) {
@@ -41,11 +41,11 @@
         </td>
       </tr>
     {/if}
-    {#if body}
+    {#if fileContent}
       <tr>
-        <th scope="row">body</th>
+        <th scope="row">file content</th>
         <td class="w-100">
-          <Highlight language={json} code={body} class="rounded m-0" />
+          <Highlight language={json} code={fileContent} class="rounded m-0" />
         </td>
       </tr>
     {/if}
