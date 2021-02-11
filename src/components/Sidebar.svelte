@@ -108,7 +108,8 @@
       display: block;
       transition: padding-left .3s;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: inherit;
         padding-left: 2%;
       }

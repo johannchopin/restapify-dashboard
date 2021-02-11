@@ -59,12 +59,12 @@
 </script>
 
 <section class="route">
-  <header class="d-flex mb-3" id={sectionId}>
+  <header class="d-flex mb-3 pl-4" id={sectionId}>
     <LinkToCopy link={window.location.href + '#' + sectionId} />
     <Route route={route} />
   </header>
 
-  <div class="route-body d-flex">
+  <div class="route-body d-flex pl-4">
     <div class="route-content w-100">
       <RouteDataTable {fileContent} {statusCode} {header} />
     </div>
@@ -101,10 +101,13 @@
   }
 
   header {
+    position: relative;
     align-items: center;
     padding-top: 2em;
 
     :global(.link-to-copy) {
+      position: absolute;
+      left: 0;
       visibility: hidden;
     }
 
