@@ -60,7 +60,7 @@
 
 <section class="route">
   <header class="d-flex mb-3 pl-4" id={sectionId}>
-    <LinkToCopy link={window.location.href + '#' + sectionId} />
+    <LinkToCopy link={window.location.href.split(/[?#]/)[0] + '#' + sectionId} />
     <Route route={route} />
   </header>
 
