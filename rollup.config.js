@@ -7,7 +7,7 @@ import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
 import sveltePreprocess from 'svelte-preprocess'
 import typescript from '@rollup/plugin-typescript'
-import css from 'rollup-plugin-css-only'
+import scss from 'rollup-plugin-scss'
 import inlineSvg from 'rollup-plugin-inline-svg';
 import Restapify from 'restapify'
 
@@ -57,7 +57,7 @@ export default {
       __NODE_ENV__: production ? JSON.stringify('production') : JSON.stringify('development')
     }),
 
-    css({ output: 'global.bundle.css' }),
+    scss({ output: 'public/build/global.bundle.css' }),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
