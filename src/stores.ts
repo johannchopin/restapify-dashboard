@@ -3,7 +3,7 @@ import type { GetRoutesResponse, Theme, GetStatesResponse, StateResponse, HttpMe
 
 interface AlertStore {
 	show: boolean
-	type: 'success' | 'error' | 'warning'
+	type: 'success' | 'danger' | 'warning'
 	message: string
 }
 
