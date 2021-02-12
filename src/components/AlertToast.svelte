@@ -12,13 +12,13 @@
   <div class={`toast d-flex align-items-center text-white bg-${$alertStore.type} border-0`} class:show={$alertStore.show} role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body">
       {$alertStore.message}
-      <button 
-        type="button" 
-        class="btn-close btn-close-white ms-auto me-2" 
-        on:click={alertStore.hide} 
-        data-bs-dismiss="toast" 
-        aria-label="Close"
-      />
     </div>
+    <button 
+      type="button" 
+      class="btn-close btn-close-white ms-auto me-2" 
+      on:click={alertStore.hide} 
+      data-bs-dismiss="toast" 
+      aria-label="Close"
+    />
   </div>
 </div>
