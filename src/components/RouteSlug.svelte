@@ -39,7 +39,7 @@
 
   .route-variable {
     opacity: .9;
-    color: lightcoral;
+    color: orangered;
   }
 
   :global(.bg-dark) {

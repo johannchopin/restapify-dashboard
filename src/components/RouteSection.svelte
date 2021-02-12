@@ -48,6 +48,8 @@
       if (status === 204) {
         alertStore.show({type: 'success', message: 'State has been updated!'})
       }
+    }).catch(() => {
+      alertStore.show({type: 'danger', message: 'There was a problem with the state update! Is the mocked server still running?'})
     })
 
     checkedState = state
@@ -59,12 +61,12 @@
 </script>
 
 <section class="route">
-  <header class="d-flex mb-3 pl-4" id={sectionId}>
+  <header class="d-flex mb-3 ps-4" id={sectionId}>
     <LinkToCopy link={window.location.href.split(/[?#]/)[0] + '#' + sectionId} />
     <Route route={route} />
   </header>
 
-  <div class="route-body d-flex pl-4">
+  <div class="route-body d-flex ps-4">
     <div class="route-content w-100">
       <RouteDataTable {fileContent} {statusCode} {header} />
     </div>
