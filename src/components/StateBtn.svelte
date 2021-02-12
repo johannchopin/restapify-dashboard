@@ -11,7 +11,7 @@
 
 <button 
   class="btn d-flex align-items-center m-0"
-  class:btn-secondary={!selected && $themeStore.mode === 'light'} 
+  class:btn-outline-primary={!selected && $themeStore.mode === 'light'} 
   class:btn-primary={selected} 
   class:btn-outline-light={!selected && $themeStore.mode === 'dark'}
   on:click={onClickState}
@@ -19,7 +19,7 @@
   <input 
     type="radio" 
     name={`state-for-${sectionId}`} 
-    class="mb-0 mr-1" 
+    class="mb-0 me-1" 
     checked={checked} 
     on:click={onCheckState}
   >{value}

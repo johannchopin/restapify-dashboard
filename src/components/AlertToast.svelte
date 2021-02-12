@@ -4,11 +4,11 @@
   $: if ($alertStore.show) {
     setTimeout(() => {
       alertStore.update(store => ({...store, show: false}))
-    }, 3000)
+    }, 3500)
   }
 </script>
 
-<div class="toast-container position-absolute bottom-0 right-0 p-3">
+<div class="toast-container position-absolute bottom-0 end-0 p-3">
   <div class={`toast d-flex align-items-center text-white bg-${$alertStore.type} border-0`} class:show={$alertStore.show} role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body">
       {$alertStore.message}

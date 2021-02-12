@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './custom.scss'
 	import { onMount } from 'svelte'
 	import { atomOneDark } from "svelte-highlight/styles"
 
