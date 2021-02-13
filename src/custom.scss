@@ -1,9 +1,9 @@
 // Customize theme
 
-$primary: #01B6F5;
-$success: #1AD1A3;
-$warning: #FFCC00;
-$danger: #EA4243;
+$primary: rgb(84, 178, 224);
+$success: rgb(45, 145, 142);
+$warning: rgb(255, 191, 99);
+$danger: rgb(255, 82, 75);
 $secondary: #A5A9AD;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
