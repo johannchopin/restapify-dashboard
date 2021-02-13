@@ -10,10 +10,9 @@
 </script>
 
 <button 
-  class="btn d-flex align-items-center m-0"
-  class:btn-outline-primary={!selected && $themeStore.mode === 'light'} 
-  class:btn-primary={selected} 
-  class:btn-outline-light={!selected && $themeStore.mode === 'dark'}
+  class="btn d-flex align-items-center m-0 btn-outline-success"
+  class:btn-outline-success={!selected} 
+  class:btn-success={selected} 
   on:click={onClickState}
 >
   <input 
