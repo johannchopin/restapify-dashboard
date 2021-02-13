@@ -126,8 +126,30 @@
     height: 100%;
     width: 6px;
     right: 0;
+    background-color: transparent;
+    border: none;
     cursor: col-resize;
-    opacity: 0;
     transform: translateX(50%);
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: 95%;
+      width: 2px;
+      background-color: var(--bs-secondary);
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+  }
+
+  :global(.bg-dark) .resize-sidebar-line::after {
+    background-color: var(--bs-light);
   }
 </style>
