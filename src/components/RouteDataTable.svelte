@@ -28,7 +28,7 @@
     <tr>
       <th scope="row">status code</th>
       <td class="w-100">
-        <p class={`status ${getStatusColor(statusCode)} font-weight-bold m-0`}>
+        <p class={`status ${getStatusColor(statusCode)} fw-bold m-0`}>
           {statusCode}
         </p>
     </td>
