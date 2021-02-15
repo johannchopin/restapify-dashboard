@@ -71,7 +71,7 @@
       <RouteDataTable {fileContent} {statusCode} {header} />
     </div>
     {#if route.states}
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column me-4">
         <StateBtn 
           value="Default" 
           selected={selectedState === null} 

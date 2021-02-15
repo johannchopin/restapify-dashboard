@@ -14,15 +14,27 @@
   }
 </script>
 
-<div class="state-btn btn-group pt-1" role="group">
+<div class="state-btn d-flex pt-1" role="group">
   <button 
-    class={`btn d-flex align-items-center m-0 fw-bold ${checked ? `btn-${getInvertedMode($themeStore.mode)}` : `btn-outline-${getInvertedMode($themeStore.mode)}`}`}
+    class={`
+      btn d-flex 
+      flex-grow-1 align-items-center
+      m-0 fw-bold 
+      rounded-0 rounded-start
+      ${checked ? `btn-${getInvertedMode($themeStore.mode)}` : `btn-outline-${getInvertedMode($themeStore.mode)}`}
+    `}
     on:click={onCheckState}
   >
     {value}
   </button>
    <button
-    class={`btn d-flex align-items-center m-0 ${selected ? `btn-${getInvertedMode($themeStore.mode)}` : `btn-outline-${getInvertedMode($themeStore.mode)}`}`}
+    class={`
+      btn d-flex 
+      align-items-center 
+      m-0 ms-1
+      rounded-0 rounded-end
+      ${selected ? `btn-${getInvertedMode($themeStore.mode)}` : `btn-outline-${getInvertedMode($themeStore.mode)}`}
+    `}
     on:click={onClickState}
   >
     <Icon name='eye' />
