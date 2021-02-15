@@ -10,7 +10,7 @@
   <div class="d-flex badge-ctn">
     <MethodBadge method={route.method} />
   </div>
-  <h3 class="text-truncate">
+  <h3>
     <RouteSlug route={route.route} />
   </h3>
 </div>
