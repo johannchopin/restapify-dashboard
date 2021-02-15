@@ -8,21 +8,21 @@
   export let sectionId: string
   export let onCheckState: () => void
   export let onClickState: () => void
+
+  const getInvertedMode = (mode: string): string => {
+    return mode === 'light' ? 'dark' : 'light'
+  }
 </script>
 
 <div class="state-btn btn-group pt-1" role="group">
   <button 
-    class="btn d-flex align-items-center m-0 btn-outline-success fw-bold"
-    class:btn-outline-success={!checked} 
-    class:btn-success={checked} 
+    class={`btn d-flex align-items-center m-0 fw-bold ${checked ? `btn-${getInvertedMode($themeStore.mode)}` : `btn-outline-${getInvertedMode($themeStore.mode)}`}`}
     on:click={onCheckState}
   >
     {value}
   </button>
    <button
-    class="btn d-flex align-items-center m-0 btn-outline-success"
-    class:btn-outline-success={!selected} 
-    class:btn-success={selected} 
+    class={`btn d-flex align-items-center m-0 ${selected ? `btn-${getInvertedMode($themeStore.mode)}` : `btn-outline-${getInvertedMode($themeStore.mode)}`}`}
     on:click={onClickState}
   >
     <Icon name='eye' />
