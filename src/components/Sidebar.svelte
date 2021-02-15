@@ -1,7 +1,7 @@
 <script lang="ts">
   import Route from './Route.svelte'
   import Searchbar from './Searchbar.svelte'
-  import { METHODS } from '../const'
+  import { METHODS, DEFAULT_SIDEBAR_WIDTH } from '../const'
 
   import { getRouteSectionId } from '../utils'
 
@@ -20,7 +20,7 @@
 
   const getSiderbarWith = () => {
     return localStorage.getItem(SIDEBAR_WIDTH_LOCALSTORAGE_KEY) 
-      || (300 + (sidebarLineWidth / 2)).toString()
+      || (DEFAULT_SIDEBAR_WIDTH + (sidebarLineWidth / 2)).toString()
   }
 
   let sidebarWidth = getSiderbarWith()
