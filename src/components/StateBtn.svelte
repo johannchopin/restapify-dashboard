@@ -23,6 +23,7 @@
       rounded-0 rounded-start
       ${checked ? `btn-${getInvertedMode($themeStore.mode)}` : `btn-outline-${getInvertedMode($themeStore.mode)}`}
     `}
+    title={`Select state ${value}`}
     on:click={onCheckState}
   >
     {value}
@@ -35,6 +36,7 @@
       rounded-0 rounded-end
       ${selected ? `btn-${getInvertedMode($themeStore.mode)}` : `btn-outline-${getInvertedMode($themeStore.mode)}`}
     `}
+    title='Preview'
     on:click={onClickState}
   >
     <Icon name='eye' />
