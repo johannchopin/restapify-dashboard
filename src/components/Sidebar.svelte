@@ -60,8 +60,13 @@
         {#each METHODS as method}
           {#if routes[route][method] && routeMatchFilters(routes[route][method], filters)}
             <li class="list-group-item p-0">
-              <a href={`#${getRouteSectionId(routes[route][method])}`} class="p-2">
+              <a href={`#${getRouteSectionId(routes[route][method])}`} class="d-flex justify-content-between p-2">
                 <Route route={{...routes[route][method], method}} />
+                {#if routes[route][method].states}
+                  <span class="badge rounded-pill bg-light text-dark">
+                    {Object.keys(routes[route][method].states).length + 1}
+                  </span>
+                {/if}
               </a>
             </li>
           {/if}
