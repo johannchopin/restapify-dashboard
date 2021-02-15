@@ -71,27 +71,25 @@
       <RouteDataTable {fileContent} {statusCode} {header} />
     </div>
     {#if route.states}
-      <div class="route-states">
-        <div class="btn-group-vertical">
+      <div class="d-flex flex-column me-4">
+        <StateBtn 
+          value="Default" 
+          selected={selectedState === null} 
+          checked={checkedState === null}
+          sectionId={sectionId} 
+          onCheckState={() => { onCheckState(null) }} 
+          onClickState={() => onClickState(null)}
+        />
+        {#each Object.keys(route.states) as state}
           <StateBtn 
-            value="Default" 
-            selected={selectedState === null} 
-            checked={checkedState === null}
+            value={state} 
             sectionId={sectionId} 
-            onCheckState={() => { onCheckState(null) }} 
-            onClickState={() => onClickState(null)}
+            selected={selectedState === state} 
+            checked={checkedState === state}
+            onCheckState={() => { onCheckState(state) }} 
+            onClickState={() => { onClickState(state) }}
           />
-          {#each Object.keys(route.states) as state}
-            <StateBtn 
-              value={state} 
-              sectionId={sectionId} 
-              selected={selectedState === state} 
-              checked={checkedState === state}
-              onCheckState={() => { onCheckState(state) }} 
-              onClickState={() => { onClickState(state) }}
-            />
-          {/each}
-        </div>
+        {/each}
       </div>
     {/if}
   </div>

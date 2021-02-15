@@ -15,7 +15,7 @@
     </div>
     <button 
       type="button" 
-      class="btn-close btn-close-white ms-auto me-2" 
+      class="btn-close btn-close-white ms-auto me-2 mb-0" 
       on:click={alertStore.hide} 
       data-bs-dismiss="toast" 
       aria-label="Close"

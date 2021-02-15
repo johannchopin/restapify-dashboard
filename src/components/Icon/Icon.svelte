@@ -4,10 +4,11 @@
   import close from './icons/close.svg'
   import circleHalf from './icons/circle-half.svg'
   import book from './icons/book.svg'
+  import eye from './icons/eye.svg'
 
   let className = ''
 
-  type Name = 'link' | 'github' | 'circle-half' | 'close' | 'book'
+  type Name = 'link' | 'github' | 'circle-half' | 'close' | 'book' | 'eye'
 
   export let name: Name = 'github'
   export { className as class }
@@ -17,7 +18,8 @@
     link,
     github,
     close,
-    book
+    book,
+    eye
   }
 </script>
 

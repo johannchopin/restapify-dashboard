@@ -79,8 +79,8 @@
 
 	#wrapper {
 		overflow-x: hidden;
-		max-height: 100%;
     overflow: hidden;
+		flex-grow: 1;
 	}
 
 	#content {

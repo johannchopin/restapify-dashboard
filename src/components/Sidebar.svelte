@@ -59,11 +59,11 @@
       {#each Object.keys(routes) as route}
         {#each METHODS as method}
           {#if routes[route][method] && routeMatchFilters(routes[route][method], filters)}
-            <a href={`#${getRouteSectionId(routes[route][method])}`}>
-              <li class="list-group-item">
+            <li class="list-group-item p-0">
+              <a href={`#${getRouteSectionId(routes[route][method])}`} class="p-2">
                 <Route route={{...routes[route][method], method}} />
-              </li>
-            </a>
+              </a>
+            </li>
           {/if}
         {/each}
       {/each}
@@ -111,7 +111,7 @@
       &:hover,
       &:focus {
         color: inherit;
-        padding-left: 2%;
+        padding-left: 5%!important;
       }
     }
   }
@@ -126,8 +126,30 @@
     height: 100%;
     width: 6px;
     right: 0;
+    background-color: transparent;
+    border: none;
     cursor: col-resize;
-    opacity: 0;
     transform: translateX(50%);
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: 95%;
+      width: 2px;
+      background-color: var(--bs-secondary);
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+  }
+
+  :global(.bg-dark) .resize-sidebar-line::after {
+    background-color: var(--bs-light);
   }
 </style>

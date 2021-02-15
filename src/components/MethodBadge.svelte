@@ -33,6 +33,6 @@
 
 <style>
   .badge {
-    text-shadow: 1px 1px 1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }
 </style>
