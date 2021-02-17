@@ -19,7 +19,6 @@
 	import api from './axiosStore'
 
 	let routes: GetRoutesResponse | null = null
-	let isSidebarToggled = true
 
 	routesStore.subscribe(value => {
 		routes = value
@@ -56,7 +55,7 @@
 </svelte:head>
 
 <Navbar />
-<div class="d-flex" class:toggled={isSidebarToggled} id="wrapper">
+<div class="d-flex" id="wrapper">
 	<Sidebar />
 	<div id="page-content-wrapper" class={`bg-${$themeStore.mode}`}>
 		<div class="container-fluid" id="content">
