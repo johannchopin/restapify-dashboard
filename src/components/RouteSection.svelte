@@ -73,7 +73,7 @@
     {#if route.states}
       <div class="d-flex flex-column me-4">
         <StateBtn 
-          value="Default" 
+          value="_default" 
           selected={selectedState === null} 
           checked={checkedState === null}
           sectionId={sectionId} 
