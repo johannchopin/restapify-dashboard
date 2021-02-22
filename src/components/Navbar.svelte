@@ -11,7 +11,7 @@
     </a>
     <ul class="d-flex ms-auto mb-0">
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/johannchopin/restapify" target="_blank">
+        <a class="nav-link" href="https://restapify.vercel.app/docs" target="_blank">
           <Icon name='book' class={`${$themeStore.mode}`} />
         </a>
       </li>
