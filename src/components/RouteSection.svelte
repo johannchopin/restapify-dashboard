@@ -53,6 +53,7 @@
     })
 
     checkedState = state
+    selectedState = state
   }
 
   const onClickState = (state: string) => {
