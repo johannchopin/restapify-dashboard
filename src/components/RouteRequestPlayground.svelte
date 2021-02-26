@@ -12,6 +12,10 @@
   export let method: HttpMethod
   export let route: string
 
+  const getSanitisedPlaygroundId = (): string => {
+    return `play-${method}${replaceAll(replaceAll(replaceAll(route, '/', '-'), '[', '-'), ']', '-')}`
+  }
+
   const routeStructure = getRouteStructure(route)
 
   let request = routeStructure.map((structure) => structure.value)
@@ -72,12 +76,13 @@
                 </li>
               {/each}
               <li class="d-flex align-items-center ps-1">
-                  ?<input 
-                    type="text" 
-                    class={`form-control queries mb-0 py-0 px-1 bg-${$themeStore.mode}`} 
-                    placeholder="queries..."
-                    bind:value={queries}
-                  >
+                <span>?</span>
+                <input 
+                  type="text" 
+                  class={`form-control queries mb-0 py-0 px-1 ms-1 bg-${$themeStore.mode}`} 
+                  placeholder="queries..."
+                  bind:value={queries}
+                >
               </li>
             </ol>
           </nav>
@@ -92,7 +97,7 @@
   </form>
 
   {#if response}
-     <RouteRequestPlaygroundResponse id={`play-${method}${replaceAll(replaceAll(replaceAll(route, '/', '-'), '[', '-'), ']', '-')}`} {response} />
+     <RouteRequestPlaygroundResponse id={getSanitisedPlaygroundId()} {response} />
   {/if}
 </div>
 
