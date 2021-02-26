@@ -11,23 +11,23 @@
   import { METHODS } from './const'
 
 	// S T O R E S
-	import { routes as routesStore, states as statesStore, theme as themeStore } from './stores'
+	import { apiInfos as apiInfosStore, states as statesStore, theme as themeStore } from './stores'
 
 	// T Y P E S
-	import type { GetRoutesResponse, GetStatesResponse } from './types'
+	import type { GetApiInfosResponse, GetStatesResponse } from './types'
 
 	import api from './axiosStore'
 
-	let routes: GetRoutesResponse | null = null
+	let apiInfos: GetApiInfosResponse | null = null
 
-	routesStore.subscribe(value => {
-		routes = value
+	apiInfosStore.subscribe(value => {
+		apiInfos = value
 	})
 
 	const fetchRoutes = (): void => {
-	api.get<GetRoutesResponse>('/routes')
+		api.get<GetApiInfosResponse>('/api')
 		.then((response) => {
-			routesStore.set(response.data)
+			apiInfosStore.set(response.data)
 		})
 		.catch((error) => {
 			console.log(error);
@@ -59,11 +59,11 @@
 	<Sidebar />
 	<div id="page-content-wrapper" class={`bg-${$themeStore.mode}`}>
 		<div class="container-fluid" id="content">
-			{#if routes}
-				{#each Object.keys(routes) as route}
+			{#if apiInfos?.routes}
+				{#each Object.keys(apiInfos.routes) as route}
         	{#each METHODS as method}
-          	{#if routes[route][method]}
-							<RouteSection route={{...routes[route][method], method}} />
+          	{#if apiInfos.routes[route][method]}
+							<RouteSection route={{...apiInfos.routes[route][method], method}} />
 						{/if}	
 					{/each}
 				{/each}
