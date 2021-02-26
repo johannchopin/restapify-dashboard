@@ -1,6 +1,7 @@
 <script  lang="ts">
   import Route from './Route.svelte'
   import RouteDataTable from './RouteDataTable.svelte'
+  import RouteRequestPlayground from './RouteRequestPlayground.svelte'
   import LinkToCopy from './LinkToCopy.svelte'
   import StateBtn from './StateBtn.svelte'
 
@@ -67,32 +68,35 @@
     <Route route={route} />
   </header>
 
-  <div class="route-body d-flex ps-4">
-    <div class="route-content w-100">
-      <RouteDataTable {fileContent} {statusCode} {header} />
-    </div>
-    {#if route.states}
-      <div class="d-flex flex-column me-4">
-        <StateBtn 
-          value="_default" 
-          selected={selectedState === null} 
-          checked={checkedState === null}
-          sectionId={sectionId} 
-          onCheckState={() => { onCheckState(null) }} 
-          onClickState={() => onClickState(null)}
-        />
-        {#each Object.keys(route.states) as state}
-          <StateBtn 
-            value={state} 
-            sectionId={sectionId} 
-            selected={selectedState === state} 
-            checked={checkedState === state}
-            onCheckState={() => { onCheckState(state) }} 
-            onClickState={() => { onClickState(state) }}
-          />
-        {/each}
+  <div class="route-body d-flex flex-column ps-4">
+    <div class="d-flex">
+      <div class="route-content w-100">
+        <RouteDataTable {fileContent} {statusCode} {header} />
       </div>
-    {/if}
+      {#if route.states}
+        <div class="d-flex flex-column me-4">
+          <StateBtn 
+            value="_default" 
+            selected={selectedState === null} 
+            checked={checkedState === null}
+            sectionId={sectionId} 
+            onCheckState={() => { onCheckState(null) }} 
+            onClickState={() => onClickState(null)}
+          />
+          {#each Object.keys(route.states) as state}
+            <StateBtn 
+              value={state} 
+              sectionId={sectionId} 
+              selected={selectedState === state} 
+              checked={checkedState === state}
+              onCheckState={() => { onCheckState(state) }} 
+              onClickState={() => { onClickState(state) }}
+            />
+          {/each}
+        </div>
+      {/if}
+    </div>
+    <RouteRequestPlayground method={route.method} route={route.route} />
   </div>
 </section>
 

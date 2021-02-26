@@ -5,22 +5,11 @@
   import type { RouteResponse } from '../types'
 
   import { theme as themeStore } from '../stores'
+  import { getStatusColorClass } from '../utils'
 
   export let statusCode: number
   export let header: RouteResponse['header']
   export let fileContent: string
-
-  const getStatusColor = (statusCode: number): string => {
-    if (statusCode < 300) {
-      return 'text-success'
-    }
-
-    if (statusCode < 400) {
-      return 'text-warning'
-    }
-
-    return 'text-danger'
-  }
 </script>
 
 <table class={`table table-striped table-bordered table-${$themeStore.mode}`}>
@@ -28,7 +17,7 @@
     <tr>
       <th scope="row">status code</th>
       <td class="w-100">
-        <p class={`status ${getStatusColor(statusCode)} fw-bold m-0`}>
+        <p class={`status ${getStatusColorClass(statusCode)} fw-bold m-0`}>
           {statusCode}
         </p>
     </td>
