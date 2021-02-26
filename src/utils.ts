@@ -27,3 +27,15 @@ return routeComponents
       }
     })
 }
+
+export const getStatusColorClass = (statusCode: number): string => {
+  if (statusCode < 300) {
+    return 'text-success'
+  }
+
+  if (statusCode < 400) {
+    return 'text-warning'
+  }
+
+  return 'text-danger'
+}
