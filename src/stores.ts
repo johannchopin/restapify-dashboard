@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { GetRoutesResponse, Theme, GetStatesResponse, StateResponse, HttpMethod, Mode } from './types';
+import type { GetApiInfosResponse, Theme, GetStatesResponse, StateResponse, HttpMethod, Mode } from './types';
 
 interface AlertStore {
 	show: boolean
@@ -65,6 +65,6 @@ const createAlertStore = () => {
 }
 
 export const theme = createThemeStore()
-export const routes = writable<GetRoutesResponse | null>(null)
+export const apiInfos = writable<GetApiInfosResponse | null>(null)
 export const states = createStatesStore()
 export const alert = createAlertStore()

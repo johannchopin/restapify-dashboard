@@ -6,14 +6,14 @@
   import { getRouteSectionId } from '../utils'
 
   // S T O R E S
-  import { routes as routesStore, theme as themeStore } from '../stores'
+  import { apiInfos as apiInfosStore, theme as themeStore } from '../stores'
 
   // T Y P E S
-  import type { GetRoutesResponse, RouteResponse } from '../types'
+  import type { GetApiInfosResponse, RouteResponse } from '../types'
 
   const SIDEBAR_WIDTH_LOCALSTORAGE_KEY = 'sidebarWidth'
 
-  let routes: GetRoutesResponse | null = null
+  let apiInfos: GetApiInfosResponse | null = null
   let filters = null
 
   let sidebarLineWidth = 6
@@ -25,8 +25,8 @@
 
   let sidebarWidth = getSiderbarWith()
 
-	routesStore.subscribe(value => {
-		routes = value
+	apiInfosStore.subscribe(value => {
+		apiInfos = value
   })
 
   const setFilter = (value: string) => {
@@ -54,17 +54,17 @@
 
 <div class={`bg-${$themeStore.mode} border-right d-flex flex-column`} id="sidebar-wrapper" style={`width: ${sidebarWidth}px;`}>
   <Searchbar onInput={setFilter} />
-  <ul class="list-group pb-3">
-    {#if routes}
-      {#each Object.keys(routes) as route}
+  {#if apiInfos?.routes}
+    <ul class="list-group pb-3">
+      {#each Object.keys(apiInfos.routes) as route}
         {#each METHODS as method}
-          {#if routes[route][method] && routeMatchFilters(routes[route][method], filters)}
+          {#if apiInfos.routes[route][method] && routeMatchFilters(apiInfos.routes[route][method], filters)}
             <li class="list-group-item p-0">
-              <a href={`#${getRouteSectionId(routes[route][method])}`} class="d-flex justify-content-between p-2">
-                <Route route={{...routes[route][method], method}} />
-                {#if routes[route][method].states}
+              <a href={`#${getRouteSectionId(apiInfos.routes[route][method])}`} class="d-flex justify-content-between p-2">
+                <Route route={{...apiInfos.routes[route][method], method}} />
+                {#if apiInfos.routes[route][method].states}
                   <span class="badge rounded-pill bg-light text-dark">
-                    {Object.keys(routes[route][method].states).length + 1}
+                    {Object.keys(apiInfos.routes[route][method].states).length + 1}
                   </span>
                 {/if}
               </a>
@@ -72,8 +72,8 @@
           {/if}
         {/each}
       {/each}
-    {/if}	
-  </ul>
+    </ul>
+  {/if}	
   <button class="resize-sidebar-line"
     on:mousedown={() => {
       document.addEventListener('mousemove', resizeSidebar)

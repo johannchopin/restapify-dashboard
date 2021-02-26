@@ -32,4 +32,10 @@ export interface GetRoutesResponse {
   }
 }
 
+export interface GetApiInfosResponse {
+  port: number
+  baseUrl: string
+  routes: GetRoutesResponse
+}
+
 export type GetStatesResponse = StateResponse[]
