@@ -1,28 +1,11 @@
 <script lang="ts">
-  export let route: string
+  import { getRouteStructure } from '../utils'
 
-  interface RouteComponent {
-    type?: 'variable'
-    value: string 
-  }
-  const getRouteStructure = (): RouteComponent[] => {
-    const routeComponents = route.split('/')
-    return routeComponents
-      .filter(routeComponent => {
-        return routeComponent.trim().length > 0
-      })
-      .map(routeComponent => {
-        const isVariable = routeComponent.startsWith('[') && routeComponent.endsWith(']')
-          return {
-            type: isVariable ? 'variable' : undefined,
-            value: routeComponent
-          }
-        })
-  }
+  export let route: string
 </script>
 
 <span class="route">
-{#each getRouteStructure() as routeComponent}
+{#each getRouteStructure(route) as routeComponent}
    <span class="route-delimiter">/</span>
    <span class:route-variable={routeComponent.type === 'variable'}>{routeComponent.value}</span>
 {/each}
