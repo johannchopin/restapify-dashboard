@@ -59,6 +59,10 @@
     color: black;
   }
 
+  :global(.bg-dark) button {
+    color: white;
+  }
+
   .tab-pane :global(.container) {
     padding-left: 0;
   }
