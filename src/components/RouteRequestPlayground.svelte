@@ -62,7 +62,7 @@
                       required
                       on:input={(event) => {
                         const requestClone = [...request]
-                        requestClone[i] = event.target.value
+                        requestClone[i] = event.currentTarget.value
                         request = requestClone
                       }}
                     />
