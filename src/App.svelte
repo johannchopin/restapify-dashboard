@@ -44,9 +44,23 @@
 		})
 	}
 
+	const scrollToInitialRoute = (): void => {
+		const hash = location.hash
+		const hashExist = hash.startsWith('#')
+
+		if (hashExist) {
+			setTimeout(() => {
+				document
+					.getElementById(hash.substring(1))
+					.scrollIntoView({ behavior: "smooth" });
+			}, 200)
+		}
+	}
+
 	onMount(async () => {
 		fetchRoutes()
 		fetchStates()
+		scrollToInitialRoute()
 	})
 </script>
 
