@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { theme as themeStore } from '../stores'
+  import { theme as themeStore, apiInfos as apiInfosStore } from '../stores'
   import MethodBadge from './MethodBadge.svelte'
   import RouteRequestPlaygroundResponse from './RouteRequestPlaygroundResponse.svelte'
   import type { Response } from './RouteRequestPlaygroundResponse.svelte'
@@ -24,7 +24,7 @@
   let response: Response | null = null
 
   const fetch = (): void => {
-    let requestCall = `http://localhost:6768/api/${request.join('/')}`
+    let requestCall = `http://localhost:${$apiInfosStore.port}${$apiInfosStore.baseUrl}/${request.join('/')}`
     if (queries) requestCall += `?${queries}`
     api[method.toLowerCase()](requestCall)
       .then(({data, headers, status}) => {
