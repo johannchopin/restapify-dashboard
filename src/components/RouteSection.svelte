@@ -137,6 +137,7 @@
   .route-body {
     :global(.hljs) {
       max-width: 40vw;
+      max-height: 45vh;
     }
   }
 </style>
