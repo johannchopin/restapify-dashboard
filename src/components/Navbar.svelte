@@ -31,6 +31,7 @@
 
 <style lang="scss">
   .navbar {
+    display: block;
     z-index: 1;
 
     &.bg-dark {

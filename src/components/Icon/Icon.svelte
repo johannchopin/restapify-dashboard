@@ -27,6 +27,7 @@
   .icon {
     display: flex;
     width: 1em;
+    height: 1em;
 
     &.dark {
       color: white;
