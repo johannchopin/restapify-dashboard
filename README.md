@@ -2,6 +2,9 @@
 
 Interface for Restapify's dashboard.
 
+<a href="https://github.com/johannchopin/restapify-dashboard/actions">
+  <img src="https://github.com/johannchopin/restapify-dashboard/actions/workflows/test.yml/badge.svg" alt="test workflow">
+</a>
 <a href="https://gitmoji.dev/">
   <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
 </a>
