@@ -8,7 +8,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
-    "validate": "svelte-check"
+    "validate": "svelte-check",
+    "test": "yarn validate"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
