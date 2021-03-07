@@ -24,8 +24,11 @@
   let response: Response | null = null
 
   const fetch = (): void => {
-    let requestCall = `http://localhost:${$apiInfosStore.port}${$apiInfosStore.baseUrl}/${request.join('/')}`
-    if (queries) requestCall += `?${queries}`
+    response = null
+
+    const timestamp = new Date().getTime()
+    let requestCall = `http://localhost:${$apiInfosStore.port}${$apiInfosStore.baseUrl}/${request.join('/')}?timestamp=${timestamp}`
+    if (queries) requestCall += `&${queries}`
     api[method.toLowerCase()](requestCall)
       .then(({data, headers, status}) => {
         response = {
@@ -97,7 +100,7 @@
   </form>
 
   {#if response}
-     <RouteRequestPlaygroundResponse id={getSanitisedPlaygroundId()} {response} />
+    <RouteRequestPlaygroundResponse id={getSanitisedPlaygroundId()} {response} />
   {/if}
 </div>
 
