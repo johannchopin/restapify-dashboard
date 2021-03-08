@@ -1,13 +1,17 @@
 import axios from 'axios'
 
-const url = new URL(window.location.href)
-//const port = url.port
+// @ts-ignore
+const port = (__NODE_ENV__ === 'development' 
+  ? 6767 
+  : new URL(window.location.href).port)
 
-// for development purpose only
-const port = 6767
+// @ts-ignore
+const baseUrl = (__NODE_ENV__ === 'development' 
+  ? '/dev/restapify/api' 
+  : '/restapify/api')
 
 const instance = axios.create({
-  baseURL: `http://localhost:${port}/restapify/api`
+  baseURL: `http://localhost:${port}${baseUrl}`
 })
 
 export default instance

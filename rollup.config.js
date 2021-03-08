@@ -1,20 +1,33 @@
+import path from 'path'
 import svelte from 'rollup-plugin-svelte'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import replace from '@rollup/plugin-replace';
 import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
 import sveltePreprocess from 'svelte-preprocess'
 import typescript from '@rollup/plugin-typescript'
-import css from 'rollup-plugin-css-only'
+import scss from 'rollup-plugin-scss'
 import inlineSvg from 'rollup-plugin-inline-svg';
+import Restapify from 'restapify'
 
 const production = !process.env.ROLLUP_WATCH
+const apiFolderPath = path.resolve(__dirname, './api')
 
 function serve() {
   let server
+  const rpfy = new Restapify({
+    rootDir: apiFolderPath,
+    baseUrl: '/dev/restapify/api'
+  })
+
+  rpfy.run()
 
   function toExit() {
-    if (server) server.kill(0)
+    if (server) { 
+      server.kill(0)
+      rpfy.close()
+    }
   }
 
   return {
@@ -40,7 +53,11 @@ export default {
     file: 'public/build/bundle.js'
   },
   plugins: [
-    css({ output: 'global.bundle.css' }),
+    replace({
+      __NODE_ENV__: production ? JSON.stringify('production') : JSON.stringify('development')
+    }),
+
+    scss({ output: 'public/build/global.bundle.css' }),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
@@ -61,7 +78,7 @@ export default {
     // https://github.com/rollup/plugins/tree/master/packages/commonjs
     resolve({
       browser: true,
-      dedupe: ['svelte']
+      extensions: ['.svelte', '.js']
     }),
     commonjs(),
     typescript({

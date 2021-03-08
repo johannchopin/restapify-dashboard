@@ -1,12 +1,26 @@
 import { writable } from 'svelte/store';
-import type { GetRoutesResponse, Theme, GetStatesResponse, StateResponse, HttpMethod } from './types';
+import type { GetApiInfosResponse, Theme, GetStatesResponse, StateResponse, HttpMethod, Mode } from './types';
+
+interface AlertStore {
+	show: boolean
+	type: 'success' | 'danger' | 'warning'
+	message: string
+}
 
 const createThemeStore = () => {
-  const { subscribe, update } = writable<Theme>({ mode: 'light' })
+  const { subscribe, update } = writable<Theme>({ 
+		mode: localStorage.getItem('mode') as Mode || 'light' 
+	})
 
   return {
 		subscribe,
-		toggleMode: () => update(value => ({...value, mode: value.mode === 'light' ? 'dark' : 'light'})),
+		toggleMode: () => {
+			return update(value => {
+					const mode = value.mode === 'light' ? 'dark' : 'light'
+					localStorage.setItem('mode', mode)
+					return {...value, mode }
+				})
+			}
 	}
 }
 
@@ -31,6 +45,26 @@ const createStatesStore = () => {
 	}
 }
 
+const createAlertStore = () => {
+	const { subscribe, update, set } = writable<AlertStore>({type: 'success', show: false, message: ''})
+
+	return {
+		subscribe,
+		show: (data: Omit<AlertStore, 'show'>): void => {
+			set({
+				show: true,
+				...data
+			})
+		},
+		hide: () => {
+			update((value) => ({...value, show: false}))
+		},
+		update,
+		set
+	}
+}
+
 export const theme = createThemeStore()
-export const routes = writable<GetRoutesResponse | null>(null)
+export const apiInfos = writable<GetApiInfosResponse | null>(null)
 export const states = createStatesStore()
+export const alert = createAlertStore()

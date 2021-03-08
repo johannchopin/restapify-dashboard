@@ -12,7 +12,7 @@
       case 'PUT':
         return 'bg-primary'
       case 'PATCH':
-        return 'bg-light'
+        return 'bg-secondary'
       case 'DELETE':
         return 'bg-danger'
     }
@@ -30,3 +30,9 @@
 </script>
 
 <span class={`badge ${getBadgeBgClass()} method`}>{getMethodName()}</span>
+
+<style>
+  .badge {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+</style>

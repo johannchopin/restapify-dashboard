@@ -1,5 +1,6 @@
 <script lang="ts">
   import MethodBadge from './MethodBadge.svelte'
+  import RouteSlug from './RouteSlug.svelte'
   import type { RouteResponse } from '../types'
 
   export let route: RouteResponse
@@ -9,7 +10,9 @@
   <div class="d-flex badge-ctn">
     <MethodBadge method={route.method} />
   </div>
-  <h3 class="text-truncate">{route.route}</h3>
+  <h3>
+    <RouteSlug route={route.route} />
+  </h3>
 </div>
 
 <style>
