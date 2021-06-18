@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 // @ts-ignore
-const port = (__NODE_ENV__ === 'development' 
+const port = (process.env.NODE_ENV === 'development' 
   ? 6767 
   : new URL(window.location.href).port)
 
 // @ts-ignore
-const baseUrl = (__NODE_ENV__ === 'development' 
+const baseUrl = (process.env.NODE_ENV === 'development' 
   ? '/dev/restapify/api' 
   : '/restapify/api')
 
