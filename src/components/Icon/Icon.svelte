@@ -5,10 +5,12 @@
   import circleHalf from './icons/circle-half.svg'
   import book from './icons/book.svg'
   import eye from './icons/eye.svg'
+  import clipboard from './icons/clipboard.svg'
+  import check from './icons/check.svg'
 
   let className = ''
 
-  type Name = 'link' | 'github' | 'circle-half' | 'close' | 'book' | 'eye'
+  type Name = 'link' | 'github' | 'circle-half' | 'close' | 'book' | 'eye' | 'clipboard' | 'check'
 
   export let name: Name = 'github'
   export { className as class }
@@ -19,7 +21,9 @@
     github,
     close,
     book,
-    eye
+    eye,
+    clipboard,
+    check
   }
 </script>
 
