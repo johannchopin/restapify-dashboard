@@ -39,3 +39,5 @@ export const getStatusColorClass = (statusCode: number): string => {
 
   return 'text-danger'
 }
+
+export const setClipboard = (text: string): void => { navigator.clipboard.writeText(text) }
