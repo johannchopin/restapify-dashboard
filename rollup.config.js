@@ -54,7 +54,7 @@ export default {
   },
   plugins: [
     replace({
-      __NODE_ENV__: production ? JSON.stringify('production') : JSON.stringify('development')
+      'process.env.NODE_ENV': production ? JSON.stringify('production') : JSON.stringify('development')
     }),
 
     scss({ output: 'public/build/global.bundle.css' }),
