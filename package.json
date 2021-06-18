@@ -1,6 +1,6 @@
 {
   "name": "restapify-dashboard",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "files": [
     "public"
   ],
@@ -20,7 +20,7 @@
     "@types/node": "^14.14.10",
     "concurrently": "^5.3.0",
     "node-sass": "^5.0.0",
-    "restapify": "^0.0.38",
+    "restapify": "^2.1.2",
     "rollup": "^2.3.4",
     "rollup-plugin-inline-svg": "^2.0.0",
     "rollup-plugin-livereload": "^2.0.0",

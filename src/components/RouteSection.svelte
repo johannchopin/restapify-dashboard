@@ -4,9 +4,10 @@
   import RouteRequestPlayground from './RouteRequestPlayground.svelte'
   import LinkToCopy from './LinkToCopy.svelte'
   import StateBtn from './StateBtn.svelte'
+  import RouteLinkActions from './RouteLinkActions.svelte'
 
 	import api from '../axiosStore'
-  import { states as statesStore, alert as alertStore } from '../stores'
+  import { states as statesStore, apiInfos as apiInfosStore, alert as alertStore } from '../stores'
   
   import type { RouteResponse } from '../types'
 
@@ -66,6 +67,7 @@
   <header class="d-flex mb-3 ps-4" id={sectionId}>
     <LinkToCopy link={window.location.href.split(/[?#]/)[0] + '#' + sectionId} />
     <Route route={route} />
+    <RouteLinkActions route={`http://localhost:${$apiInfosStore.port}${$apiInfosStore.baseUrl}${route.route}`} />
   </header>
 
   <div class="route-body d-flex flex-column ps-4">
