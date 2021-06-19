@@ -33,6 +33,15 @@ const createStatesStore = () => {
 		subscribe,
 		update,
 		set,
+		fetch: (): void => {
+			api.get<GetStatesResponse>('/states')
+			.then((response) => {
+				set(response.data)
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+		},
 		getStateForRoute: (states: GetStatesResponse, route: string, method: HttpMethod): StateResponse | null => {
 			if (states) {
 				return states.find(state => {

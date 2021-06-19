@@ -24,16 +24,6 @@
 		apiInfos = value
 	})
 
-	const fetchStates = (): void => {
-		api.get<GetStatesResponse>('/states')
-		.then((response) => {
-			statesStore.set(response.data)
-		})
-		.catch((error) => {
-			console.log(error);
-		})
-	}
-
 	const scrollToInitialRoute = (): void => {
 		const hash = location.hash
 		const hashExist = hash.startsWith('#')
@@ -49,7 +39,7 @@
 
 	onMount(async () => {
 		apiInfosStore.fetch()
-		fetchStates()
+		statesStore.fetch()
 		scrollToInitialRoute()
 	})
 </script>
