@@ -24,26 +24,6 @@
 		apiInfos = value
 	})
 
-	const fetchRoutes = (): void => {
-		api.get<GetApiInfosResponse>('/api')
-		.then((response) => {
-			apiInfosStore.set(response.data)
-		})
-		.catch((error) => {
-			console.log(error);
-		})
-	}
-
-	const fetchStates = (): void => {
-		api.get<GetStatesResponse>('/states')
-		.then((response) => {
-			statesStore.set(response.data)
-		})
-		.catch((error) => {
-			console.log(error);
-		})
-	}
-
 	const scrollToInitialRoute = (): void => {
 		const hash = location.hash
 		const hashExist = hash.startsWith('#')
@@ -58,8 +38,8 @@
 	}
 
 	onMount(async () => {
-		fetchRoutes()
-		fetchStates()
+		apiInfosStore.fetch()
+		statesStore.fetch()
 		scrollToInitialRoute()
 	})
 </script>

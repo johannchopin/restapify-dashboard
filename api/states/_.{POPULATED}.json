@@ -1,0 +1,7 @@
+[
+  {
+    "route": "/users",
+    "state": "INV_CRED",
+    "method": "POST"
+  }
+]

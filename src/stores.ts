@@ -1,4 +1,6 @@
 import { writable } from 'svelte/store';
+import api from './axiosStore'
+
 import type { GetApiInfosResponse, Theme, GetStatesResponse, StateResponse, HttpMethod, Mode } from './types';
 
 interface AlertStore {
@@ -29,6 +31,17 @@ const createStatesStore = () => {
 
 	return {
 		subscribe,
+		update,
+		set,
+		fetch: (): void => {
+			api.get<GetStatesResponse>('/states')
+			.then((response) => {
+				set(response.data)
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+		},
 		getStateForRoute: (states: GetStatesResponse, route: string, method: HttpMethod): StateResponse | null => {
 			if (states) {
 				return states.find(state => {
@@ -39,9 +52,7 @@ const createStatesStore = () => {
 			}
 
 			return null
-		},
-		update,
-		set
+		}
 	}
 }
 
@@ -50,6 +61,8 @@ const createAlertStore = () => {
 
 	return {
 		subscribe,
+		update,
+		set,
 		show: (data: Omit<AlertStore, 'show'>): void => {
 			set({
 				show: true,
@@ -58,13 +71,30 @@ const createAlertStore = () => {
 		},
 		hide: () => {
 			update((value) => ({...value, show: false}))
-		},
+		}
+	}
+}
+
+const createApiInfosStore = () => {
+	const { subscribe, update, set } = writable<GetApiInfosResponse | null>(null)
+
+	return {
+		subscribe,
 		update,
-		set
+		set,
+		fetch: () => {
+			api.get<GetApiInfosResponse>('/api')
+			.then((response) => {
+				set(response.data)
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+		}
 	}
 }
 
 export const theme = createThemeStore()
-export const apiInfos = writable<GetApiInfosResponse | null>(null)
+export const apiInfos = createApiInfosStore()
 export const states = createStatesStore()
 export const alert = createAlertStore()
