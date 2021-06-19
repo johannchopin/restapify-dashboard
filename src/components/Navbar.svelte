@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from './Icon/Icon.svelte'
   import restapifyIcon from '../assets/restapify-icon.svg'
-  import { theme as themeStore } from '../stores'
+  import { apiInfos as apiInfosStore, theme as themeStore } from '../stores'
 </script>
 
 <nav class={`navbar navbar-expand-lg ps-4 pe-4 pt-0 pb-0 navbar-${$themeStore.mode} bg-${$themeStore.mode} shadow`}>
@@ -11,18 +11,33 @@
     </a>
     <ul class="d-flex ms-auto mb-0">
       <li class="nav-item">
-        <a class="nav-link" href="https://restapify.vercel.app/docs" target="_blank">
+        <a class="nav-link" href="https://restapify.vercel.app/docs" target="_blank" title="Documentation">
           <Icon name='book' class={`${$themeStore.mode}`} />
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/johannchopin/restapify" target="_blank">
+        <a class="nav-link" href="https://github.com/johannchopin/restapify" target="_blank" title="GitHub repository">
           <Icon name='github' class={`${$themeStore.mode}`} />
         </a>
       </li>
       <li class="nav-item">
-        <button id="toggleTheme" class="btn mb-0" on:click={themeStore.toggleMode}>
+        <button
+          id="toggleTheme"
+          class="btn mb-0"
+          on:click={themeStore.toggleMode}
+          title="Toggle theme"
+          >
           <Icon name='circle-half' class={`${$themeStore.mode}`} />
+        </button>
+      </li>
+      <li class="nav-item">
+        <button 
+          id="refresh"
+          class="btn mb-0" 
+          on:click={apiInfosStore.fetch}
+          title="Refresh"
+          >
+          <Icon name='arrow-circle' class={`${$themeStore.mode}`} />
         </button>
       </li>
     </ul>
@@ -61,6 +76,13 @@
 
         :global(.icon) {
           transform: rotate(-135deg);
+        }
+      }
+
+      #refresh:focus {
+        :global(.icon) {
+          transition-duration: .6s;
+          transform: rotate(360deg);
         }
       }
     }
