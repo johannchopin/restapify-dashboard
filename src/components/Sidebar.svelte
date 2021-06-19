@@ -1,6 +1,7 @@
 <script lang="ts">
   import Route from './Route.svelte'
   import Searchbar from './Searchbar.svelte'
+  import Footer from './Footer.svelte'
   import { METHODS, DEFAULT_SIDEBAR_WIDTH } from '../const'
 
   import { getRouteSectionId } from '../utils'
@@ -73,7 +74,8 @@
         {/each}
       {/each}
     </ul>
-  {/if}	
+  {/if}
+  <Footer />
   <button class="resize-sidebar-line"
     on:mousedown={() => {
       document.addEventListener('mousemove', resizeSidebar)
