@@ -1,7 +1,12 @@
 <script lang="ts">
   import Icon from './Icon/Icon.svelte'
   import restapifyIcon from '../assets/restapify-icon.svg'
-  import { apiInfos as apiInfosStore, theme as themeStore } from '../stores'
+  import { apiInfos as apiInfosStore, theme as themeStore, states as statesStore } from '../stores'
+
+  const refresh = (): void => {
+    apiInfosStore.fetch()
+    statesStore.fetch()
+  }
 </script>
 
 <nav class={`navbar navbar-expand-lg ps-4 pe-4 pt-0 pb-0 navbar-${$themeStore.mode} bg-${$themeStore.mode} shadow`}>
@@ -34,7 +39,7 @@
         <button 
           id="refresh"
           class="btn mb-0" 
-          on:click={apiInfosStore.fetch}
+          on:click={refresh}
           title="Refresh"
           >
           <Icon name='arrow-circle' class={`${$themeStore.mode}`} />
