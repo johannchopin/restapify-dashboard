@@ -24,16 +24,6 @@
 		apiInfos = value
 	})
 
-	const fetchRoutes = (): void => {
-		api.get<GetApiInfosResponse>('/api')
-		.then((response) => {
-			apiInfosStore.set(response.data)
-		})
-		.catch((error) => {
-			console.log(error);
-		})
-	}
-
 	const fetchStates = (): void => {
 		api.get<GetStatesResponse>('/states')
 		.then((response) => {
@@ -58,7 +48,7 @@
 	}
 
 	onMount(async () => {
-		fetchRoutes()
+		apiInfosStore.fetch()
 		fetchStates()
 		scrollToInitialRoute()
 	})
