@@ -7,10 +7,11 @@
   import eye from './icons/eye.svg'
   import clipboard from './icons/clipboard.svg'
   import check from './icons/check.svg'
+  import arrowCircle from './icons/arrow-circle.svg'
 
   let className = ''
 
-  type Name = 'link' | 'github' | 'circle-half' | 'close' | 'book' | 'eye' | 'clipboard' | 'check'
+  type Name = 'link' | 'github' | 'circle-half' | 'close' | 'book' | 'eye' | 'clipboard' | 'check' | 'arrow-circle'
 
   export let name: Name = 'github'
   export { className as class }
@@ -23,7 +24,8 @@
     book,
     eye,
     clipboard,
-    check
+    check,
+    'arrow-circle': arrowCircle
   }
 </script>
 
