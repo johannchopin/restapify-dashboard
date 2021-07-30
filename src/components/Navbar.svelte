@@ -67,7 +67,7 @@
 
     .navbar-brand {
       :global(svg) {
-        width: 20%;
+        width: 60px;
       }
     }
   }
