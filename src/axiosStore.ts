@@ -6,12 +6,10 @@ const port = (process.env.NODE_ENV === 'development'
   : new URL(window.location.href).port)
 
 // @ts-ignore
-const baseUrl = (process.env.NODE_ENV === 'development' 
-  ? '/dev/restapify/api' 
-  : '/restapify/api')
+const baseURL = (process.env.NODE_ENV === 'development' 
+  ? 'http://localhost:6767/dev/restapify/api' 
+  : 'api')
 
-const instance = axios.create({
-  baseURL: `http://localhost:${port}${baseUrl}`
-})
+const instance = axios.create({ baseURL })
 
 export default instance
