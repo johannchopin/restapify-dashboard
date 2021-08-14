@@ -7,7 +7,7 @@
 <span class="route">
 {#each getRouteStructure(route) as routeComponent}
    <span class="route-delimiter">/</span>
-   <span class:route-variable={routeComponent.type === 'variable'}>{routeComponent.value}</span>
+   <span class="text-nowrap" class:route-variable={routeComponent.type === 'variable'}>{routeComponent.value}</span>
 {/each}
 </span>
 

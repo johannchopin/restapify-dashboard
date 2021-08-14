@@ -65,10 +65,8 @@
       }
     }
 
-    .navbar-brand {
-      :global(svg) {
-        width: 60px;
-      }
+    .navbar-brand :global(svg) {
+      width: 60px;
     }
   }
 

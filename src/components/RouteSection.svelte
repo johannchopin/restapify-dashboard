@@ -11,7 +11,7 @@
   
   import type { RouteResponse } from '../types'
 
-  import { getRouteSectionId } from '../utils'
+  import { getPathToAPI, getRouteSectionId } from '../utils'
 
   export let route: RouteResponse
 
@@ -67,7 +67,7 @@
   <header class="d-flex mb-3 ps-4" id={sectionId}>
     <LinkToCopy link={window.location.href.split(/[?#]/)[0] + '#' + sectionId} />
     <Route route={route} />
-    <RouteLinkActions route={`http://localhost:${$apiInfosStore.port}${$apiInfosStore.baseUrl}${route.route}`} />
+    <RouteLinkActions route={`${getPathToAPI($apiInfosStore.baseUrl)}${route.route}`} />
   </header>
 
   <div class="route-body d-flex flex-column ps-4">
