@@ -27,9 +27,9 @@
     response = null
 
     const timestamp = new Date().getTime()
-    let requestCall = `http://localhost:${$apiInfosStore.port}${$apiInfosStore.baseUrl}/${request.join('/')}?timestamp=${timestamp}`
+    let requestCall = `/${request.join('/')}?timestamp=${timestamp}`
     if (queries) requestCall += `&${queries}`
-    api[method.toLowerCase()](requestCall)
+    api[method.toLowerCase()](requestCall, { baseURL: $apiInfosStore.baseUrl})
       .then(({data, headers, status}) => {
         response = {
             status,

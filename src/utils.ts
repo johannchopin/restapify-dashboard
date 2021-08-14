@@ -41,3 +41,13 @@ export const getStatusColorClass = (statusCode: number): string => {
 }
 
 export const setClipboard = (text: string): void => { navigator.clipboard.writeText(text) }
+
+export const getPathToAPI = (apiBaseUrl: string): string => {
+  let path = `${window.location.origin}${replaceAll(window.location.pathname.replace('/restapify', apiBaseUrl), '//', '/')}`
+
+  if (path.endsWith('/')) {
+    path = path.slice(0, -1)
+  }
+
+  return path
+}
