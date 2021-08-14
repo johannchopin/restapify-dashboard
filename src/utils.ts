@@ -43,5 +43,5 @@ export const getStatusColorClass = (statusCode: number): string => {
 export const setClipboard = (text: string): void => { navigator.clipboard.writeText(text) }
 
 export const getPathToAPI = (apiBaseUrl: string): string => {
-  return `${window.location.origin}${window.location.pathname.replace('/restapify', apiBaseUrl)}`
+  return replaceAll(`${window.location.origin}${window.location.pathname.replace('/restapify', apiBaseUrl)}`, '//', '/')
 }
