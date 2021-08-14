@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Icon from './Icon/Icon.svelte'
-  import { theme as themeStore } from '../stores'
+  import Icon from '../Icon/Icon.svelte'
+  import { theme as themeStore } from '../../stores'
 
   export let onInput: (value: string) => void
 

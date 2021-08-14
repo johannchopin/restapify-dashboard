@@ -1,21 +1,19 @@
 <script lang="ts">
-  import Route from './Route.svelte'
   import Searchbar from './Searchbar.svelte'
+  import RoutesList from './RoutesList.svelte'
   import Footer from './Footer.svelte'
-  import { METHODS, DEFAULT_SIDEBAR_WIDTH } from '../const'
-
-  import { getRouteSectionId } from '../utils'
+  import { DEFAULT_SIDEBAR_WIDTH } from '../../const'
 
   // S T O R E S
-  import { apiInfos as apiInfosStore, theme as themeStore } from '../stores'
+  import { apiInfos as apiInfosStore, theme as themeStore } from '../../stores'
 
   // T Y P E S
-  import type { GetApiInfosResponse, RouteResponse } from '../types'
+  import type { GetApiInfosResponse } from '../../types'
 
   const SIDEBAR_WIDTH_LOCALSTORAGE_KEY = 'sidebarWidth'
 
   let apiInfos: GetApiInfosResponse | null = null
-  let filters = null
+  let filters: string[] | null = null
 
   let sidebarLineWidth = 6
 
@@ -38,17 +36,6 @@
     sidebarWidth = (elmt.pageX + (sidebarLineWidth / 2)).toString()
   }
 
-  const routeMatchFilters = (routesToFilter: RouteResponse, filtersToApply: string[] | null): boolean => {
-    const infosToMatch = `${routesToFilter.method} ${routesToFilter.route}`.toLowerCase()
-    if (filtersToApply) {
-      return filtersToApply.every((filter) => {
-        return infosToMatch.includes(filter)
-      })
-    }
-    
-    return true
-  }
-
   // update sidebar width value in local storage when `sidebarWidth` change
   $: localStorage.setItem(SIDEBAR_WIDTH_LOCALSTORAGE_KEY, sidebarWidth)
 </script>
@@ -56,24 +43,7 @@
 <div class={`bg-${$themeStore.mode} border-right d-flex flex-column`} id="sidebar-wrapper" style={`width: ${sidebarWidth}px;`}>
   <Searchbar onInput={setFilter} />
   {#if apiInfos?.routes}
-    <ul class="list-group pb-3">
-      {#each Object.keys(apiInfos.routes) as route}
-        {#each METHODS as method}
-          {#if apiInfos.routes[route][method] && routeMatchFilters(apiInfos.routes[route][method], filters)}
-            <li class="list-group-item p-0">
-              <a href={`#${getRouteSectionId(apiInfos.routes[route][method])}`} class="d-flex justify-content-between p-2">
-                <Route route={{...apiInfos.routes[route][method], method}} />
-                {#if apiInfos.routes[route][method].states}
-                  <span class="badge rounded-pill bg-light text-dark">
-                    {Object.keys(apiInfos.routes[route][method].states).length + 1}
-                  </span>
-                {/if}
-              </a>
-            </li>
-          {/if}
-        {/each}
-      {/each}
-    </ul>
+    <RoutesList routes={apiInfos.routes} {filters} />
   {/if}
   <Footer />
   <button class="resize-sidebar-line"
@@ -106,23 +76,6 @@
 		padding: 0.875rem 1.25rem;
 		font-size: 2em;
 	}
-
-	#sidebar-wrapper .list-group {
-    max-height: 100%;
-    overflow: auto;
-
-    a {
-      display: block;
-      transition: padding-left .3s;
-
-      &:hover,
-      &:focus {
-        color: inherit;
-        padding-left: 5%!important;
-      }
-    }
-  }
-
 
   :global(#wrapper.toggled #sidebar-wrapper)  {
 		margin-left: 0;
