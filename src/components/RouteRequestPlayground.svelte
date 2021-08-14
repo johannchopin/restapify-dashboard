@@ -4,7 +4,7 @@
   import RouteRequestPlaygroundResponse from './RouteRequestPlaygroundResponse.svelte'
   import type { Response } from './RouteRequestPlaygroundResponse.svelte'
 
-  import { getPathToAPI, getRouteStructure, replaceAll } from '../utils'
+  import { getRouteStructure, replaceAll } from '../utils'
   import type { HttpMethod } from '../types'
 
 	import api from '../axiosStore'
@@ -27,7 +27,7 @@
     response = null
 
     const timestamp = new Date().getTime()
-    let requestCall = `${getPathToAPI($apiInfosStore.baseUrl)}/${request.join('/')}?timestamp=${timestamp}`
+    let requestCall = `/${request.join('/')}?timestamp=${timestamp}`
     if (queries) requestCall += `&${queries}`
     api[method.toLowerCase()](requestCall)
       .then(({data, headers, status}) => {
