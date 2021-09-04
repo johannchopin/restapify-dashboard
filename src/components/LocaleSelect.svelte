@@ -39,8 +39,10 @@
 </script>
 
 <div 
-  class={`locale-select position-relative btn btn-outline-${$themeStore.mode === 'light' ? 'dark' : 'light'} d-flex align-items-center`}
-  title="update API's locale"
+  class="locale-select position-relative btn d-flex align-items-center p-1"
+  class:btn-outline-dark={$themeStore.mode === 'light'}
+  class:btn-outline-light={$themeStore.mode === 'dark'}
+  title="Update API's locale"
 >
   <select value={localize} on:change={(e) => updateLocalize(e.currentTarget.value)} class="opacity-0 p-0 m-0 position-absolute w-100 h-100 start-0">
     {#each localizes as localizeOpt}
