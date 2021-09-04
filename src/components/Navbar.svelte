@@ -2,6 +2,7 @@
   import Icon from './Icon/Icon.svelte'
   import restapifyIcon from '../assets/restapify-icon.svg'
   import { apiInfos as apiInfosStore, theme as themeStore, states as statesStore } from '../stores'
+  import LocalizeSelect from './LocaleSelect.svelte'
 
   const refresh = (): void => {
     apiInfosStore.fetch()
@@ -14,7 +15,10 @@
     <a class="navbar-brand" href="/">
       {@html restapifyIcon}
     </a>
-    <ul class="d-flex ms-auto mb-0">
+    <ul class="d-flex ms-auto mb-0 align-items-center">
+     <li class="nav-item">
+        <LocalizeSelect />
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="https://restapify.vercel.app/docs" target="_blank" title="Documentation">
           <Icon name='book' class={`${$themeStore.mode}`} />
