@@ -38,4 +38,9 @@ export interface GetApiInfosResponse {
   routes: GetRoutesResponse
 }
 
+export type GetLocalizesResponse = string[]
+export interface GetLocalizeResponse {
+  locale: string
+}
+
 export type GetStatesResponse = StateResponse[]

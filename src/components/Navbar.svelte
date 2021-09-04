@@ -1,7 +1,11 @@
 <script lang="ts">
   import Icon from './Icon/Icon.svelte'
-  import restapifyIcon from '../assets/restapify-icon.svg'
+  import restapifyIconLight from '../assets/restapify-icon.svg'
+  import restapifyIconDark from '../assets/restapify-icon-dark.svg'
   import { apiInfos as apiInfosStore, theme as themeStore, states as statesStore } from '../stores'
+  import LocalizeSelect from './LocaleSelect.svelte'
+
+  $: restapifyIcon = $themeStore.mode === 'light' ? restapifyIconLight : restapifyIconDark
 
   const refresh = (): void => {
     apiInfosStore.fetch()
@@ -14,7 +18,10 @@
     <a class="navbar-brand" href="/">
       {@html restapifyIcon}
     </a>
-    <ul class="d-flex ms-auto mb-0">
+    <ul class="d-flex ms-auto mb-0 align-items-center">
+     <li class="nav-item">
+        <LocalizeSelect />
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="https://restapify.vercel.app/docs" target="_blank" title="Documentation">
           <Icon name='book' class={`${$themeStore.mode}`} />
@@ -57,12 +64,6 @@
     &.bg-dark {
       background: black!important;
       box-shadow: 0 .5rem 1rem rgba(0,0,0,.65)!important;
-
-      .navbar-brand {
-        :global(svg) {
-          filter: invert(100%);
-        }
-      }
     }
 
     .navbar-brand :global(svg) {
