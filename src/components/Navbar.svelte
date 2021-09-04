@@ -1,8 +1,11 @@
 <script lang="ts">
   import Icon from './Icon/Icon.svelte'
-  import restapifyIcon from '../assets/restapify-icon.svg'
+  import restapifyIconLight from '../assets/restapify-icon.svg'
+  import restapifyIconDark from '../assets/restapify-icon-dark.svg'
   import { apiInfos as apiInfosStore, theme as themeStore, states as statesStore } from '../stores'
   import LocalizeSelect from './LocaleSelect.svelte'
+
+  $: restapifyIcon = $themeStore.mode === 'light' ? restapifyIconLight : restapifyIconDark
 
   const refresh = (): void => {
     apiInfosStore.fetch()
@@ -61,12 +64,6 @@
     &.bg-dark {
       background: black!important;
       box-shadow: 0 .5rem 1rem rgba(0,0,0,.65)!important;
-
-      .navbar-brand {
-        :global(svg) {
-          filter: invert(100%);
-        }
-      }
     }
 
     .navbar-brand :global(svg) {
