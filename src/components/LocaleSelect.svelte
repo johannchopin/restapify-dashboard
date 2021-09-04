@@ -5,14 +5,14 @@
   import api from '../axiosStore'
   import type { GetLocalizesResponse, GetLocalizeResponse } from '../types/api'
 
-  let localizes: string[] = []
-  let localize: string = '...'
+  let locales: string[] = []
+  let locale: string = '...'
 
   const updateLocalize = (newLocalize: string): void => {
     api.put('/configs/locales', {
       localize: newLocalize
     }).then(() => {
-      localize = newLocalize
+      locale = newLocalize
     }).catch(() => {
       alertStore.show({type: 'danger', message: 'There was a problem with the localize update! Is the mocked server still running?'})
     })
@@ -21,14 +21,14 @@
   const fetchLocalizes = (): void => {
     api.get<GetLocalizesResponse>('/configs/locales')
       .then((response) => {
-        localizes = response.data
+        locales = response.data
       })
   }
 
   const fetchLocalize = (): void => {
     api.get<GetLocalizeResponse>('/configs/locale')
       .then((response) => {
-        localize = response.data.locale
+        locale = response.data.locale
       })
   }
 
@@ -44,13 +44,13 @@
   class:btn-outline-light={$themeStore.mode === 'dark'}
   title="Update API's locale"
 >
-  <select value={localize} on:change={(e) => updateLocalize(e.currentTarget.value)} class="opacity-0 p-0 m-0 position-absolute w-100 h-100 start-0">
-    {#each localizes as localizeOpt}
+  <select value={locale} on:change={(e) => updateLocalize(e.currentTarget.value)} class="opacity-0 p-0 m-0 position-absolute w-100 h-100 start-0">
+    {#each locales as localizeOpt}
        <option value={localizeOpt}>{localizeOpt}</option>
     {/each}
   </select>
   
-  <Icon name='globe' class="me-1" /> {localize}
+  <Icon name='globe' class="me-1" /> {locale}
 </div>
 
 <style lang="scss">
