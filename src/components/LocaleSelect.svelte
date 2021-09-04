@@ -8,11 +8,11 @@
   let locales: string[] = []
   let locale: string = '...'
 
-  const updateLocalize = (newLocalize: string): void => {
+  const updateLocalize = (newLocale: string): void => {
     api.put('/configs/locales', {
-      localize: newLocalize
+      locale: newLocale
     }).then(() => {
-      locale = newLocalize
+      locale = newLocale
     }).catch(() => {
       alertStore.show({type: 'danger', message: 'There was a problem with the localize update! Is the mocked server still running?'})
     })
