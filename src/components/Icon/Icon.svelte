@@ -1,6 +1,7 @@
 <script lang="ts">
   import link from './icons/link.svg'
   import github from './icons/github.svg'
+  import globe from './icons/globe.svg'
   import close from './icons/close.svg'
   import circleHalf from './icons/circle-half.svg'
   import book from './icons/book.svg'
@@ -11,7 +12,7 @@
 
   let className = ''
 
-  type Name = 'link' | 'github' | 'circle-half' | 'close' | 'book' | 'eye' | 'clipboard' | 'check' | 'arrow-circle'
+  type Name = 'link' | 'github' | 'circle-half' | 'close' | 'book' | 'eye' | 'clipboard' | 'check' | 'arrow-circle' | 'globe'
 
   export let name: Name = 'github'
   export { className as class }
@@ -20,6 +21,7 @@
     'circle-half': circleHalf,
     link,
     github,
+    globe,
     close,
     book,
     eye,
